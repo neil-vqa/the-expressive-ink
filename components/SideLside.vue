@@ -21,7 +21,7 @@ export default {
 			names: ['jihyo','hyojoo','sora','suzy','sonee'],
 			transitionIn: 'animate__fadeInUp',
 			offsetVal: 0.7,
-			debugVal: true,
+			debugVal: false,
 			image: 'https://i.pinimg.com/originals/cf/1e/1f/cf1e1f0935d8048f2da4ac4781d8261c.jpg',
 			overlayBg: '#ADAEB3',
 			stepBg: '#E7E9EF'

@@ -1,4 +1,6 @@
-# story
+# the expressive ink
+
+Platform for creating scrollytelling articles. Inspired by ABC News' odyssey-scrollyteller stories.
 
 ## Build Setup
 

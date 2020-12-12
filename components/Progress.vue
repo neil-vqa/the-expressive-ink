@@ -16,7 +16,7 @@ export default {
 			names: ['jihyo','hyojoo','sora','suzy','sonee'],
 			transitionIn: 'animate__fadeInUp',
 			offsetVal: 0.7,
-			debugVal: true,
+			debugVal: false,
 		}
 	},
 	mounted() {

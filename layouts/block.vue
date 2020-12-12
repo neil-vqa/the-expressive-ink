@@ -15,3 +15,13 @@ export default {
 		},
 	}
 </script>
+
+<style>
+html {
+	@apply font-merri;
+}
+
+
+
+</style>
+

@@ -1,11 +1,13 @@
 <template>
-  <div class="container">
+  <div class="container-home">
     <div>
-      <Logo />
       <h1 class="title">
-        story
+        The Expressive Ink
       </h1>
-      <div class="links">
+      <h1 class="subtitle">
+        Tell stories in the way of the Modern Web.
+      </h1>
+      <div class="links space-x-5">
         <nuxt-link
         	to="/basic"
           class="button--grey"
@@ -45,42 +47,19 @@ export default {}
 @apply min-h-screen flex justify-center items-center text-center mx-auto;
 }
 */
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.container-home {
+	@apply flex items-center justify-center min-h-screen w-full;
 }
 
 .title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+	@apply font-lora font-semibold text-center text-6xl mb-5;
 }
 
 .subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+	@apply font-merri text-center text-3xl text-gray-700 mb-10;
 }
 
 .links {
-  padding-top: 15px;
+	@apply flex justify-center;
 }
 </style>
