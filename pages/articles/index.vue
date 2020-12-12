@@ -1,17 +1,17 @@
 <template>
   <div>
     <div v-for="article in articles" :key="article.id">
-    	<div class="px-10 py-5 text-2xl bg-blue-200 cursor-pointer hover:bg-blue-600">
-    		<nuxt-link :to="`/articles/${article.slug}`" class="">{{ article.title }}</nuxt-link>
-    	</div>
+  		<nuxt-link :to="`/articles/${article.slug}`" class="">
+  			<div class="px-10 py-5 text-2xl bg-blue-200 cursor-pointer hover:bg-blue-600">{{ article.title }}</div>
+  		</nuxt-link>
     </div>
   </div>
 </template>
 
 <script>
 const articles = [
-	{title: 'The Awesome Universe', slug: 'The-Awesome-Universe', id: 1 },
-	{title: 'The Awesome Earth', slug: 'The-Awesome-Earth', id: 2 },
+	{title: 'Kimi No Nawa', slug: 'kimi-no-nawa', id: 1 },
+	{title: '5 Centimeters per Second', slug: '5-centimeters-per-second', id: 2 },
 ]
 
 export default {

@@ -1,11 +1,11 @@
 <template>
   <div class="container-overlay">
   	<div class="graphic-overlay">
-  		<img :src="image"/>
+  		<img :src="content.pic"/>
   	</div>
   	<div class="content-overlay space-y-32">
-			<div v-for="name in names">
-				<div class="step-overlay" data-step="0">{{ name }}</div>
+			<div v-for="text in content.texts">
+				<div class="step-overlay" data-step="0">{{ text }}</div>
 			</div>
   	</div>
   </div>
@@ -16,13 +16,11 @@ import scrollama from "scrollama";
 import "intersection-observer";
 
 export default {
+	props: ['content'],
 	data() {
 		return {
-			names: ['Kimi No Nawa is Your Name in English','hyojoo','sora','suzy','sonee'],
-			transitionIn: 'animate__fadeInUp',
 			offsetVal: 0.7,
 			debugVal: false,
-			image: 'https://i.pinimg.com/originals/cf/1e/1f/cf1e1f0935d8048f2da4ac4781d8261c.jpg',
 			overlayBg: '#ADAEB3',
 			stepBg: '#E7E9EF'
 		}
