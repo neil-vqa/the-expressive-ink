@@ -1,36 +1,20 @@
 <template>
   <div class="container-home">
     <div>
-      <h1 class="title">
+      <h1 class="title text-4xl sm:text-6xl">
         The Expressive Ink
       </h1>
-      <h1 class="subtitle">
-        Tell stories in the way of the Modern Web.
+      <h1 class="subtitle text-2xl sm:text-3xl">
+        Tell stories in the way of the modern web.
       </h1>
       <div class="links space-x-5">
-        <nuxt-link
-        	to="/basic"
-          class="button--grey"
-        >
-          Basic
+        <nuxt-link to="/" class="button--grey sign-up"
+        	v-tippy="{ placement : 'top', arrow : true }" content="We'll be delighted to have you here.">
+          Sign Up
         </nuxt-link>
-        <nuxt-link
-        	to="/progress"
-          class="button--grey"
-        >
-          Progress
-        </nuxt-link>
-        <nuxt-link
-        	to="/overlay"
-          class="button--grey"
-        >
-          Overlay
-        </nuxt-link>
-        <nuxt-link
-        	to="/side"
-          class="button--grey"
-        >
-          Side by Side
+        <nuxt-link to="/articles" class="button--grey-inverted read-btn"
+        	v-tippy="{ placement : 'right', arrow : true }" content="Engaging stories by great storytellers.">
+          Read Stories
         </nuxt-link>
       </div>
     </div>
@@ -38,7 +22,16 @@
 </template>
 
 <script>
-export default {}
+export default {
+	head() {
+		return {
+			script: [
+				{ src: '' },
+				{ src: '' },
+			]
+		}
+	},
+}
 </script>
 
 <style>
@@ -52,11 +45,11 @@ export default {}
 }
 
 .title {
-	@apply font-lora font-semibold text-center text-6xl mb-5;
+	@apply font-lora font-semibold text-center mb-5;
 }
 
 .subtitle {
-	@apply font-merri text-center text-3xl text-gray-700 mb-10;
+	@apply font-merri text-center text-gray-700 mb-10;
 }
 
 .links {

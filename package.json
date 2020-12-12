@@ -13,7 +13,9 @@
     "core-js": "^3.6.5",
     "intersection-observer": "^0.11.0",
     "nuxt": "^2.14.6",
-    "scrollama": "^2.2.1"
+    "scrollama": "^2.2.1",
+    "vue-masonry-wall": "^0.3.1",
+    "vue-tippy": "^4.7.2"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^3.1.0"
