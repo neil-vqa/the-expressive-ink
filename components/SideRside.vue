@@ -21,7 +21,7 @@ export default {
 		return {
 			offsetVal: 0.7,
 			debugVal: false,
-			overlayBg: '#ADAEB3',
+			overlayBg: '#E7E9EF',
 			stepBg: '#E7E9EF'
 		}
 	},
@@ -48,13 +48,16 @@ export default {
 			let level = response.progress;
 			
 			response.element.style.opacity = level;
-			response.element.style.backgroundColor =  this.stepBg;
+			
+			let stepColor = (this.content.stepbg) ? this.content.stepbg:this.stepBg;
+			response.element.style.backgroundColor =  stepColor;
 		},
 		handleResize(scroller) {
 			let step = document.querySelector('.step-rside');
 			let graphic = document.querySelector('.graphic-rside');
 			
-			graphic.style.backgroundColor =  this.overlayBg;
+			let overlayColor = (this.content.picbg) ? this.content.picbg:this.overlayBg;
+			graphic.style.backgroundColor =  overlayColor;
       
       let graphicHeight = window.innerHeight / 1.5;
       let graphicMarginTop = (window.innerHeight - graphicHeight) / 2;
