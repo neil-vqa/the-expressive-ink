@@ -47,7 +47,7 @@
 <script>
 const content = {
 	sider: {
-		pic: "/stargazing.svg",
+		pics: ["/stargazing.svg","/camp.svg"],
 		stepbg: '#F59599',
 		picbg: '#333',
 		steptext: '#fff',

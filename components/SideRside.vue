@@ -1,7 +1,11 @@
 <template>
   <div class="container-rside md:flex">
   	<div class="graphic-rside">
-  		<img :src="currentPic"/>
+  		<div class="graphic-container">
+				<div v-for="pic in content.pics">
+					<img :src="pic" class="step-pic"/>
+				</div>
+  		</div>
   	</div>
   	<div class="content-rside space-y-32">
 			<div v-for="text in content.texts">
@@ -24,6 +28,8 @@ export default {
 			overlayBg: '#E7E9EF',
 			stepBg: '#E7E9EF',
 			textColor: '#000',
+			stepColor: '',
+			stepText: '',
 			currentPic: '',
 		}
 	},
@@ -33,6 +39,15 @@ export default {
 	methods: {
 		loadComponent() {
 			const scroller = scrollama();
+			let steps = document.querySelectorAll('.step-rside');
+			
+			this.stepColor = (this.content.stepbg) ? this.content.stepbg:this.stepBg;
+			this.stepText = (this.content.steptext) ? this.content.steptext:this.textColor;
+			
+			steps.forEach((step) => {
+				step.style.backgroundColor =  this.stepColor;
+				step.style.color =  this.stepText;
+			});
 			
 			scroller.setup({
 				step: ".step-rside",
@@ -46,18 +61,19 @@ export default {
 		},
 		handleStepProgress(response) {
 			// { element, index, progress }
-			//console.log(response);
 			let stepImage = response.element.getAttribute('data-step');
 			this.currentPic = stepImage;
 			
+			let activePic = document.querySelector('.now-active');
+			if (activePic) {
+				activePic.classList.remove('now-active');
+			}
+			
+			let picElement = document.querySelector(`[src="${this.currentPic}"]`);
+			picElement.classList.add('now-active');
+			
 			let level = response.progress;
 			response.element.style.opacity = level;
-			
-			let stepColor = (this.content.stepbg) ? this.content.stepbg:this.stepBg;
-			response.element.style.backgroundColor =  stepColor;
-			
-			let stepText = (this.content.steptext) ? this.content.steptext:this.textColor;
-			response.element.style.color =  stepText;
 		},
 		handleResize(scroller) {
 			let step = document.querySelector('.step-rside');
@@ -87,8 +103,17 @@ export default {
 	@apply sticky top-0 z-0 flex justify-center items-center w-full bg-gray-300 overflow-hidden;
 }
 
-.graphic-rside img {
-	@apply object-cover w-full;
+.graphic-container {
+	@apply relative w-full h-full;
+}
+
+.step-pic {
+	@apply absolute object-cover w-full h-full opacity-0;
+	transition: opacity 1s ease-in-out;
+}
+
+.step-pic.now-active {
+	opacity: 1;
 }
 
 .content-rside {

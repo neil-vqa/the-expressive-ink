@@ -1,11 +1,15 @@
 <template>
   <div class="container-overlay">
   	<div class="graphic-overlay">
-  		<img :src="content.pic"/>
+  		<div class="graphic-container">
+				<div v-for="pic in content.pics">
+					<img :src="pic" class="step-pic"/>
+				</div>
+  		</div>
   	</div>
   	<div class="content-overlay space-y-32">
 			<div v-for="text in content.texts">
-				<div class="step-overlay" data-step="0">{{ text }}</div>
+				<div class="step-overlay" :data-step="text.pic">{{ text.char }}</div>
 			</div>
   	</div>
   </div>
@@ -24,6 +28,9 @@ export default {
 			overlayBg: '#E7E9EF',
 			stepBg: '#E7E9EF',
 			textColor: '#000',
+			stepColor: '',
+			stepText: '',
+			currentPic: '',
 		}
 	},
 	mounted() {
@@ -32,6 +39,15 @@ export default {
 	methods: {
 		loadComponent() {
 			const scroller = scrollama();
+			let steps = document.querySelectorAll('.step-overlay');
+			
+			this.stepColor = (this.content.stepbg) ? this.content.stepbg:this.stepBg;
+			this.stepText = (this.content.steptext) ? this.content.steptext:this.textColor;
+			
+			steps.forEach((step) => {
+				step.style.backgroundColor =  this.stepColor;
+				step.style.color =  this.stepText;
+			});
 			
 			scroller.setup({
 				step: ".step-overlay",
@@ -45,16 +61,19 @@ export default {
 		},
 		handleStepProgress(response) {
 			// { element, index, progress }
-			let opacity = response.element.getAttribute('data-step');
+			let stepImage = response.element.getAttribute('data-step');
+			this.currentPic = stepImage;
+			
+			let activePic = document.querySelector('.now-active');
+			if (activePic) {
+				activePic.classList.remove('now-active');
+			}
+			
+			let picElement = document.querySelector(`[src="${this.currentPic}"]`);
+			picElement.classList.add('now-active');
+			
 			let level = response.progress;
-			
 			response.element.style.opacity = level;
-			
-			let stepColor = (this.content.stepbg) ? this.content.stepbg:this.stepBg;
-			response.element.style.backgroundColor =  stepColor;
-			
-			let stepText = (this.content.steptext) ? this.content.steptext:this.textColor;
-			response.element.style.color =  stepText;
 		},
 		handleResize(scroller) {
 			let step = document.querySelector('.step-overlay');
@@ -84,8 +103,17 @@ export default {
 	@apply sticky top-0 z-0 flex justify-center items-center w-full overflow-hidden;
 }
 
-.graphic-overlay img {
-	@apply object-contain h-full;
+.graphic-container {
+	@apply relative w-full h-full;
+}
+
+.step-pic {
+	@apply absolute object-cover w-full h-full opacity-0;
+	transition: opacity 1s ease-in-out;
+}
+
+.step-pic.now-active {
+	opacity: 1;
 }
 
 .content-overlay {
