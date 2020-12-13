@@ -1,11 +1,11 @@
 <template>
   <div class="container-rside md:flex">
   	<div class="graphic-rside">
-  		<img :src="content.pic"/>
+  		<img :src="currentPic"/>
   	</div>
   	<div class="content-rside space-y-32">
 			<div v-for="text in content.texts">
-				<div class="step-rside" data-step="0">{{ text }}</div>
+				<div class="step-rside" :data-step="text.pic">{{ text.char }}</div>
 			</div>
   	</div>
   </div>
@@ -22,7 +22,9 @@ export default {
 			offsetVal: 0.7,
 			debugVal: false,
 			overlayBg: '#E7E9EF',
-			stepBg: '#E7E9EF'
+			stepBg: '#E7E9EF',
+			textColor: '#000',
+			currentPic: '',
 		}
 	},
 	mounted() {
@@ -44,13 +46,18 @@ export default {
 		},
 		handleStepProgress(response) {
 			// { element, index, progress }
-			let opacity = response.element.getAttribute('data-step');
-			let level = response.progress;
+			//console.log(response);
+			let stepImage = response.element.getAttribute('data-step');
+			this.currentPic = stepImage;
 			
+			let level = response.progress;
 			response.element.style.opacity = level;
 			
 			let stepColor = (this.content.stepbg) ? this.content.stepbg:this.stepBg;
 			response.element.style.backgroundColor =  stepColor;
+			
+			let stepText = (this.content.steptext) ? this.content.steptext:this.textColor;
+			response.element.style.color =  stepText;
 		},
 		handleResize(scroller) {
 			let step = document.querySelector('.step-rside');

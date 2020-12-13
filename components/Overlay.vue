@@ -22,7 +22,8 @@ export default {
 			offsetVal: 0.7,
 			debugVal: false,
 			overlayBg: '#E7E9EF',
-			stepBg: '#E7E9EF'
+			stepBg: '#E7E9EF',
+			textColor: '#000',
 		}
 	},
 	mounted() {
@@ -51,6 +52,9 @@ export default {
 			
 			let stepColor = (this.content.stepbg) ? this.content.stepbg:this.stepBg;
 			response.element.style.backgroundColor =  stepColor;
+			
+			let stepText = (this.content.steptext) ? this.content.steptext:this.textColor;
+			response.element.style.color =  stepText;
 		},
 		handleResize(scroller) {
 			let step = document.querySelector('.step-overlay');

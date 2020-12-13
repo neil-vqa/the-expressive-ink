@@ -4,7 +4,7 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'Tell stories in the way of the modern web | The Expressive Ink',
+    title: 'Craft your stories for the modern web | The Expressive Ink',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
