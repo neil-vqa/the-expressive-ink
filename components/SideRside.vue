@@ -39,7 +39,7 @@ export default {
 	methods: {
 		loadComponent() {
 			const scroller = scrollama();
-			let steps = document.querySelectorAll('.step-rside');
+			let steps = this.$el.querySelectorAll('.step-rside');
 			
 			this.stepColor = (this.content.stepbg) ? this.content.stepbg:this.stepBg;
 			this.stepText = (this.content.steptext) ? this.content.steptext:this.textColor;
@@ -64,20 +64,20 @@ export default {
 			let stepImage = response.element.getAttribute('data-step');
 			this.currentPic = stepImage;
 			
-			let activePic = document.querySelector('.now-active');
+			let activePic = this.$el.querySelector('.now-active');
 			if (activePic) {
 				activePic.classList.remove('now-active');
 			}
 			
-			let picElement = document.querySelector(`[src="${this.currentPic}"]`);
+			let picElement = this.$el.querySelector(`[src="${this.currentPic}"]`);
 			picElement.classList.add('now-active');
 			
 			let level = response.progress;
 			response.element.style.opacity = level;
 		},
 		handleResize(scroller) {
-			let step = document.querySelector('.step-rside');
-			let graphic = document.querySelector('.graphic-rside');
+			let step = this.$el.querySelector('.step-rside');
+			let graphic = this.$el.querySelector('.graphic-rside');
 			
 			let overlayColor = (this.content.picbg) ? this.content.picbg:this.overlayBg;
 			graphic.style.backgroundColor =  overlayColor;

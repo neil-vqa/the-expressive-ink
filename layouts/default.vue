@@ -9,33 +9,21 @@ html {
 	@apply font-merri;
 }
 
-.button--grey-inverted {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
+.btn-black {
+	@apply border border-black rounded-lg bg-black text-white flex justify-center items-center transition duration-300;
+	padding: 15px 20px;
 }
 
-.button--grey-inverted:hover {
-  color: #fff;
-  background-color: #35495e;
+.btn-black:hover {
+	@apply bg-white text-black;
 }
 
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #fff;
-  background-color: #35495e;
-  
-  text-decoration: none;
-  padding: 10px 30px;
+.btn-white {
+	@apply border border-black rounded-lg bg-white text-black flex justify-center items-center transition duration-300;
+	padding: 15px 20px;
 }
 
-.button--grey:hover {
-  color: #35495e;
-  background-color: #fff;
+.btn-white:hover {
+	@apply bg-black text-white; 
 }
 </style>
