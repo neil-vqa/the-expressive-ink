@@ -1,32 +1,43 @@
 <template>
   <div>
+  	<NavBar />
     <div class="container-title">
-    	<h1 class="text-5xl font-semibold">{{ story.title }}</h1>
+    	<h1 class="text-4xl md:text-5xl font-semibold">{{ story.title }}</h1>
     	<h2 class="text-xl text-gray-700">{{ story.author }}</h2>
     	<p class="text-xl text-gray-700">{{ story.date }}</p>
     </div>
     <div>
     	<div v-for="content in story.contents" :key="content.index" class="">
-    		<div v-if="content.heading" class="px-20 mb-10 text-3xl text-center font-semibold">{{ content.heading }}</div>
-    		<div v-if="content.text" class="px-10 md:px-20 lg:px-56 mb-10 text-xl">{{ content.text }}</div>
-    		<div v-if="content.image" class="px-20 mb-10 w-3/4 mx-auto flex justify-center"><img :src="content.image"/></div>
-    		<div v-if="content.sider" class="mb-10">
+    		<div v-if="content.heading" class="mb-10 text-3xl text-center font-semibold">{{ content.heading }}</div>
+    		<div v-if="content.text" class="max-w-screen-md mx-auto px-10 mb-10 text-xl tracking-wider leading-loose">{{ content.text }}</div>
+    		<div v-if="content.image" class="mb-10 w-3/4 mx-auto flex justify-center"><img :src="content.image"/></div>
+    		
+    		<!-- scrolly-components -->
+    		<div v-if="content.sider" class="scrolly-component">
     			<client-only>
     				<SideRside :content="content.sider" />
     			</client-only>
     		</div>
-    		<div v-if="content.sidel" class="mb-10">
+    		<div v-if="content.sidel" class="scrolly-component">
     			<client-only>
     				<SideLside :content="content.sidel" />
     			</client-only>
     		</div>
-    		<div v-if="content.overlay" class="mb-10">
+    		<div v-if="content.overlay" class="scrolly-component">
     			<client-only>
     				<Overlay :content="content.overlay" />
     			</client-only>
     		</div>
+    		<div v-if="content.overlayfull" class="scrolly-component">
+    			<client-only>
+    				<OverlayFull :content="content.overlayfull" />
+    			</client-only>
+    		</div>
+    		<!-- end scrolly-components -->
+    		
     	</div>
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -65,7 +76,7 @@ const story = {
 					pic: "https://m.media-amazon.com/images/M/MV5BN2M1MGRmMTMtYmRhMi00OWU3LTkzNTQtYzhhNjFjZjAxZDk5XkEyXkFqcGdeQXVyMzgxODM4NjM@._V1_.jpg" },
 			]
 		}},
-		{overlay: {
+		{overlayfull: {
 			pics: ["https://occ-0-1723-1722.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABUIqIj4FZnA18dTr8JmadSVg0oIQlM5-B0a9qyExno5DaTVA34z3yszT9CDifyljc1GXs67vHrT3iKYk5yt6sa9YBrD7.jpg?r=275",
 						"https://resizing.flixster.com/q3jYDLHDPrLFil2z4I43MLvAAzU=/740x380/v1.bjsxNTc1NTkwO2o7MTg2NDg7MTIwMDs5NjA7NTQw",
 						"https://pbs.twimg.com/media/ERTzUe-WsAM4q2p.jpg",
@@ -107,7 +118,11 @@ export default {
 
 <style>
 .container-title {
-	@apply px-20 pt-20 mb-20 text-center;
+	@apply pt-20 mb-20 text-center;
+}
+
+.scrolly-component {
+	@apply mb-10 tracking-wider leading-relaxed;
 }
 
 

@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<div class="upper-section">
+		<!-- hero section -->
 			<h1 class="title text-lg md:text-3xl">
 		    The Expressive Ink
 		  </h1>
@@ -16,12 +17,13 @@
 		      	v-tippy="{ placement : 'top', arrow : true }" content="We'll be delighted to have you here.">
 		        Sign Up
 		      </nuxt-link>
-		      <nuxt-link to="/articles" class="btn-white"
+		      <nuxt-link to="/stories" class="btn-white"
 		      	v-tippy="{ placement : 'right', arrow : true }" content="Engaging stories by great storytellers.">
 		        Read Stories
 		      </nuxt-link>
 		    </div>
 		  </div>
+		<!-- end hero section -->
 		</div>
 		<div class="mid-section-blue px-10 py-5 md:py-32 md:px-20">
 			<h2 class="text-lg md:text-4xl font-semibold uppercase tracking-widest">Scrollytelling</h2>
@@ -47,14 +49,12 @@
 		    <nuxt-link to="/" class="btn-black">
 		      Sign Up
 		    </nuxt-link>
-		    <nuxt-link to="/articles" class="btn-white">
+		    <nuxt-link to="/stories" class="btn-white">
 		      Read Stories
 		    </nuxt-link>
 		  </div>
 		</div>
-		<div class="border-t-2 border-black flex justify-center py-5 px-2 text-center">
-			Made with ❤️ by The Expressive Ink Team, 2020
-		</div>
+		<Footer />
   </div>
 </template>
 
@@ -122,11 +122,6 @@ export default {
 </script>
 
 <style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
 .upper-section {
 	@apply relative flex flex-col items-center justify-center w-full min-h-screen;
 }

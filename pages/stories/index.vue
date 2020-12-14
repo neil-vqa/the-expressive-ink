@@ -2,22 +2,19 @@
 	<div>
 		<NavBar />
 		<div class="max-w-screen-lg lg:mx-auto py-20">
-			<vue-masonry-wall :items="articles" :options="options" @append="append">
-				<template v-slot:default="{item}">
-		      <div class="">
-		        <nuxt-link :to="`/articles/${item.slug}`" class="">
-							<div class="px-10 py-5 text-2xl bg-blue-200 cursor-pointer hover:bg-blue-600">{{ item.title }}</div>
+	      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-10">
+	      	<div v-for="article in articles">
+			      <nuxt-link :to="`/stories/${article.slug}`" class="">
+							<div class="article-card hover:shadow-2xl hover:text-gray-700">{{ article.title }}</div>
 						</nuxt-link>
-		      </div>
-		    </template>
-			</vue-masonry-wall>
+					</div>
+	      </div>
 		</div>
+		<Footer />
   </div>
 </template>
 
 <script>
-import VueMasonryWall from "vue-masonry-wall";
-
 const articles = [
 	{title: 'Kimi No Nawa', slug: 'kimi-no-nawa', id: 1 },
 	{title: '5 Centimeters per Second', slug: '5-centimeters-per-second', id: 2 },
@@ -37,7 +34,6 @@ export default {
 			]
 		}
 	},
-	components: {VueMasonryWall},
 	data() {
 		return {
 			articles: articles,
@@ -53,11 +49,9 @@ export default {
 </script>
 
 <style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
+.article-card {
+	@apply px-5 py-4 text-2xl border-b border-gray-500 cursor-pointer;
 }
-*/
 
 
 </style>
