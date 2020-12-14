@@ -38,8 +38,22 @@
 		</div>
 		<div class="show-component">
 			<client-only>
-				<Overlay :content="content2.sider" />
+				<OverlayFull :content="content2.sider" />
 			</client-only>
+		</div>
+		<div class="py-10 md:py-32 md:px-20">
+			<h2 class="text-lg md:text-4xl font-semibold text-center tracking-wider mb-10">Sign Up now or take your time reading</h2>
+			<div class="links space-x-3">
+		    <nuxt-link to="/" class="btn-black">
+		      Sign Up
+		    </nuxt-link>
+		    <nuxt-link to="/articles" class="btn-white">
+		      Read Stories
+		    </nuxt-link>
+		  </div>
+		</div>
+		<div class="border-t-2 border-black flex justify-center py-5 px-2 text-center">
+			Made with ❤️ by The Expressive Ink Team, 2020
 		</div>
   </div>
 </template>
@@ -77,16 +91,18 @@ const content2 = {
 		stepbg: '#C4D0DF',
 		picbg: '#fff',
 		steptext: '#000',
+		imagefit: 'cover',
 		texts: [
 			{ char: "What is The Expressive Ink?", pic: "/search_engine__flatline.svg" },
 			{ char: "The Expressive Ink is a 'new' platform for crafting stories in the scrollytelling format.", pic: "/coding__flatline.svg" },
 			{ char: "Our goal is to make scrollytelling easy for (1) writers, storytellers, content creators, and (2) for the general public as well.", pic: "/user_group_flatline.svg" },
 			{ char: "Users can sign up and use the platform for FREE. It is part of our vision of making scrollytelling open.", pic: "/authentication_flatline.svg" },
-			{ char: "We currently have 3 basic scrollytelling components:", pic: "/report_analysis__flatline.svg" },
+			{ char: "We currently have 4 basic scrollytelling components:", pic: "/report_analysis__flatline.svg" },
 			{ char: "(1) the 'Right Side Text' component you've seen above.", pic: "/report_analysis__flatline.svg" },
 			{ char: "(2) the 'Left Side Text' component which is the opposite of right side??", pic: "/report_analysis__flatline.svg" },
-			{ char: "and (3) the 'Overlay' component that you are seeing right now.", pic: "/report_analysis__flatline.svg" },
-			{ char: "We are continually developing more components to make you and your readers experience awesomeness. We welcome your awesome suggestions as well.", pic: "/idea_applications_flatline.svg" },
+			{ char: "(3) the 'Overlay' component which centers the texts.", pic: "/report_analysis__flatline.svg" },
+			{ char: "And (4) the 'Full Overlay' component that you are seeing right now.", pic: "/report_analysis__flatline.svg" },
+			{ char: "We are continually developing more components for you and your readers to experience awesomeness. We welcome your awesome suggestions as well.", pic: "/idea_applications_flatline.svg" },
 			{ char: "Be inspired by reading stories featured right now!", pic: "/book_lover_flatline.svg" },
 		]
 }};

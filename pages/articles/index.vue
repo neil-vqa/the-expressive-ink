@@ -1,14 +1,17 @@
 <template>
-  <div class="w-3/4 mx-auto py-20 bg-gray-200">
-  	<vue-masonry-wall :items="articles" :options="options" @append="append">
-  		<template v-slot:default="{item}">
-        <div class="">
-          <nuxt-link :to="`/articles/${item.slug}`" class="">
-						<div class="px-10 py-5 text-2xl bg-blue-200 cursor-pointer hover:bg-blue-600">{{ item.title }}</div>
-					</nuxt-link>
-        </div>
-      </template>
-  	</vue-masonry-wall>
+	<div>
+		<NavBar />
+		<div class="max-w-screen-lg lg:mx-auto py-20">
+			<vue-masonry-wall :items="articles" :options="options" @append="append">
+				<template v-slot:default="{item}">
+		      <div class="">
+		        <nuxt-link :to="`/articles/${item.slug}`" class="">
+							<div class="px-10 py-5 text-2xl bg-blue-200 cursor-pointer hover:bg-blue-600">{{ item.title }}</div>
+						</nuxt-link>
+		      </div>
+		    </template>
+			</vue-masonry-wall>
+		</div>
   </div>
 </template>
 

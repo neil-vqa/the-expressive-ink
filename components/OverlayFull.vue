@@ -1,15 +1,15 @@
 <template>
-  <div class="container-lside md:flex">
-  	<div class="graphic-lside">
+  <div class="container-overlay-full">
+  	<div class="graphic-overlay-full">
   		<div class="graphic-container">
 				<div v-for="pic in content.pics">
 					<img :src="pic" class="step-pic"/>
 				</div>
   		</div>
   	</div>
-  	<div class="content-lside space-y-32">
+  	<div class="content-overlay-full space-y-32">
 			<div v-for="text in content.texts">
-				<div class="step-lside" :data-step="text.pic">{{ text.char }}</div>
+				<div class="step-overlay-full" :data-step="text.pic">{{ text.char }}</div>
 			</div>
   	</div>
   </div>
@@ -41,7 +41,7 @@ export default {
 	methods: {
 		loadComponent() {
 			const scroller = scrollama();
-			let steps = this.$el.querySelectorAll('.step-lside');
+			let steps = this.$el.querySelectorAll('.step-overlay-full');
 			let images = this.$el.querySelectorAll('.step-pic');
 			
 			this.stepBg = (this.content.stepbg) ? this.content.stepbg:this.stepBgDef;
@@ -58,7 +58,7 @@ export default {
 			});
 			
 			scroller.setup({
-				step: ".step-lside",
+				step: ".step-overlay-full",
 				offset: this.offsetVal,
 				debug: this.debugVal,
 				progress: true,
@@ -84,16 +84,16 @@ export default {
 			response.element.style.opacity = level;
 		},
 		handleResize(scroller) {
-			let step = this.$el.querySelector('.step-lside');
-			let graphic = this.$el.querySelector('.graphic-lside');
+			//let step = this.$el.querySelector('.step-overlay-full');
+			let graphic = this.$el.querySelector('.graphic-overlay-full');
 			
 			let overlayBg = (this.content.picbg) ? this.content.picbg:this.overlayBgDef;
 			graphic.style.backgroundColor =  overlayBg;
       
-      let graphicHeight = window.innerHeight / 1.5;
-      let graphicMarginTop = (window.innerHeight - graphicHeight) / 2;
-      graphic.style.height =  graphicHeight + "px"
-      graphic.style.top =  graphicMarginTop + "px"
+      //let graphicHeight = window.innerHeight;
+      //let graphicMarginTop = (window.innerHeight - graphicHeight) / 2;
+      graphic.style.height =  window.innerHeight + "px";
+      //graphic.style.top =  graphicMarginTop + "px";
       
       scroller.resize();
 		},
@@ -103,12 +103,12 @@ export default {
 
 <style scoped>
 
-.container-lside {
+.container-overlay-full {
 	@apply relative w-full mx-auto py-16;
 }
 
-.graphic-lside {
-	@apply sticky top-0 z-0 flex justify-center items-center w-full bg-gray-300 overflow-hidden;
+.graphic-overlay-full {
+	@apply sticky top-0 z-0 flex justify-center items-center w-full overflow-hidden;
 }
 
 .graphic-container {
@@ -124,57 +124,38 @@ export default {
 	opacity: 1;
 }
 
-.content-lside {
+.content-overlay-full {
 	@apply relative w-full flex flex-col justify-center items-center;
 }
 
-.step-lside {
+.step-overlay-full {
 	@apply flex items-center text-base p-10 opacity-0;
 	min-width: 300px;
 	max-width: 320px;
 }
 
-.step-lside:last-child {
+.step-overlay-full:last-child {
 	margin-bottom: 8rem;
 }
 
 @media screen and (min-width: 600px) {
-	.step-lside {
+	.step-overlay-full {
 		@apply text-xl;
 		max-width: 420px;
 	}
-}
-
-@media screen and (min-width: 768px) {
-	.graphic-lside {
-		@apply w-3/5 order-last;
-	}
 	
-	.content-lside {
-		@apply w-2/5 order-first;
-	}
-	
-	.step-lside {
-		max-width: 280px;
-	}
-	
-	.step-lside:first-child {
-		margin-top: 10rem;
-	}
-	
-	.step-lside:last-child {
+	.step-overlay-full:last-child {
 		margin-bottom: 12rem;
 	}
 }
 
 @media screen and (min-width: 1024px) {
-	.step-lside {
-		max-width: 460px;
-	}	
-}
-
-@media screen and (min-width: 1560px) {
-	.step-lside:last-child {
+	.step-overlay-full {
+		@apply text-2xl;
+		max-width: 480px;
+	}
+	
+	.step-overlay-full:last-child {
 		margin-bottom: 16rem;
 	}
 }

@@ -25,12 +25,14 @@ export default {
 		return {
 			offsetVal: 0.7,
 			debugVal: false,
-			overlayBg: '#E7E9EF',
-			stepBg: '#E7E9EF',
-			textColor: '#000',
-			stepColor: '',
+			overlayBgDef: '#E7E9EF',
+			stepBgDef: '#E7E9EF',
+			stepTextDef: '#000',
+			stepBg: '',
 			stepText: '',
 			currentPic: '',
+			imageFitDef: 'contain',
+			imageFit: '',
 		}
 	},
 	mounted() {
@@ -40,13 +42,19 @@ export default {
 		loadComponent() {
 			const scroller = scrollama();
 			let steps = this.$el.querySelectorAll('.step-overlay');
+			let images = this.$el.querySelectorAll('.step-pic');
 			
-			this.stepColor = (this.content.stepbg) ? this.content.stepbg:this.stepBg;
-			this.stepText = (this.content.steptext) ? this.content.steptext:this.textColor;
+			this.stepBg = (this.content.stepbg) ? this.content.stepbg:this.stepBgDef;
+			this.stepText = (this.content.steptext) ? this.content.steptext:this.stepTextDef;
+			this.imageFit = (this.content.imagefit) ? this.content.imagefit:this.imageFitDef;
 			
 			steps.forEach((step) => {
-				step.style.backgroundColor =  this.stepColor;
+				step.style.backgroundColor =  this.stepBg;
 				step.style.color =  this.stepText;
+			});
+			
+			images.forEach((image) => {
+				image.style.objectFit =  this.imageFit;
 			});
 			
 			scroller.setup({
@@ -78,9 +86,9 @@ export default {
 		handleResize(scroller) {
 			let step = this.$el.querySelector('.step-overlay');
 			let graphic = this.$el.querySelector('.graphic-overlay');
-      
-      let overlayColor = (this.content.picbg) ? this.content.picbg:this.overlayBg;
-			graphic.style.backgroundColor =  overlayColor;
+			
+			let overlayBg = (this.content.picbg) ? this.content.picbg:this.overlayBgDef;
+			graphic.style.backgroundColor =  overlayBg;
       
       let graphicHeight = window.innerHeight / 1.5;
       let graphicMarginTop = (window.innerHeight - graphicHeight) / 2;

@@ -2,7 +2,7 @@
   <div>
     <div class="container-title">
     	<h1 class="text-5xl font-semibold">{{ story.title }}</h1>
-    	<h2 class="text-2xl text-gray-700">{{ story.author }}</h2>
+    	<h2 class="text-xl text-gray-700">{{ story.author }}</h2>
     	<p class="text-xl text-gray-700">{{ story.date }}</p>
     </div>
     <div>
@@ -73,6 +73,7 @@ const story = {
 				],
 			stepbg: '#50E3C2',
 			picbg: '#50E3C2',
+			imagefit: 'cover',
 			texts: [
 				{char: "Through a series of rushed cutscenes (Zen Zen Zense), it is shown that Taki and Mitsuha start communicating with each other by leaving notes on paper or leaving memos in each other's phones.",
 					pic: "https://occ-0-1723-1722.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABUIqIj4FZnA18dTr8JmadSVg0oIQlM5-B0a9qyExno5DaTVA34z3yszT9CDifyljc1GXs67vHrT3iKYk5yt6sa9YBrD7.jpg?r=275" },
