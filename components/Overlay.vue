@@ -29,6 +29,7 @@ export default {
 			stepBgDef: '#E7E9EF',
 			stepTextDef: '#000',
 			stepBg: '',
+			stepRGBA: '',
 			stepText: '',
 			currentPic: '',
 			imageFitDef: 'contain',
@@ -48,8 +49,10 @@ export default {
 			this.stepText = (this.content.steptext) ? this.content.steptext:this.stepTextDef;
 			this.imageFit = (this.content.imagefit) ? this.content.imagefit:this.imageFitDef;
 			
+			this.hexToRgba(this.stepBg);
+			
 			steps.forEach((step) => {
-				step.style.backgroundColor =  this.stepBg;
+				step.style.backgroundColor =  this.stepRGBA;
 				step.style.color =  this.stepText;
 			});
 			
@@ -96,6 +99,14 @@ export default {
       graphic.style.top =  graphicMarginTop + "px";
       
       scroller.resize();
+		},
+		hexToRgba(hex) {
+			let color = hex.replace('#', '')
+      let r = parseInt(color.substring(0, 2), 16)
+      let g = parseInt(color.substring(2, 4), 16)
+      let b = parseInt(color.substring(4, 6), 16)
+      let result = 'rgba(' + r + ',' + g + ',' + b + ',' + 0.85 + ')'
+      this.stepRGBA = result;
 		},
 	},
 }
