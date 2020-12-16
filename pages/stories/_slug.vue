@@ -8,29 +8,29 @@
     </div>
     <div>
     	<div v-for="content in story.contents" :key="content.index" class="">
-    		<div v-if="content.heading" class="mb-10 text-3xl text-center font-semibold">{{ content.heading }}</div>
-    		<div v-if="content.text" class="max-w-screen-md mx-auto px-10 mb-10 text-xl tracking-wider leading-loose">{{ content.text }}</div>
-    		<div v-if="content.image" class="mb-10 w-3/4 mx-auto flex justify-center"><img :src="content.image"/></div>
+    		<div v-if="content.block == 'heading'" class="mb-10 text-3xl text-center font-semibold">{{ content.body }}</div>
+    		<div v-if="content.block == 'text'" class="max-w-screen-md mx-auto px-10 mb-10 text-xl tracking-wider leading-loose">{{ content.body }}</div>
+    		<div v-if="content.block == 'image'" class="mb-10 w-3/4 mx-auto flex justify-center"><img :src="content.body"/></div>
     		
     		<!-- scrolly-components -->
-    		<div v-if="content.sider" class="scrolly-component">
+    		<div v-if="content.block == 'sider'" class="scrolly-component">
     			<client-only>
-    				<SideRside :content="content.sider" />
+    				<SideRside :content="content.body" />
     			</client-only>
     		</div>
-    		<div v-if="content.sidel" class="scrolly-component">
+    		<div v-if="content.block == 'sidel'" class="scrolly-component">
     			<client-only>
-    				<SideLside :content="content.sidel" />
+    				<SideLside :content="content.body" />
     			</client-only>
     		</div>
-    		<div v-if="content.overlay" class="scrolly-component">
+    		<div v-if="content.block == 'overlay'" class="scrolly-component">
     			<client-only>
-    				<Overlay :content="content.overlay" />
+    				<Overlay :content="content.body" />
     			</client-only>
     		</div>
-    		<div v-if="content.overlayfull" class="scrolly-component">
+    		<div v-if="content.block == 'overlayfull'" class="scrolly-component">
     			<client-only>
-    				<OverlayFull :content="content.overlayfull" />
+    				<OverlayFull :content="content.body" />
     			</client-only>
     		</div>
     		<!-- end scrolly-components -->
