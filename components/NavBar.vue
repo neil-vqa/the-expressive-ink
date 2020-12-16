@@ -3,7 +3,7 @@
 		<div class="flex justify-between max-w-screen-lg lg:mx-auto px-5">
 		  <div class="flex justify-center sm:justify-start items-center">
 		  	<nuxt-link to="/">
-		  		<h1 class="font-lora font-bold text-xl uppercase hover:text-gray-600">The Expressive Ink</h1>
+		  		<h1 class="font-lora font-bold text-xl capitalize hover:text-gray-600">The Expressive Ink</h1>
 		  	</nuxt-link>
 		  </div>
 		  <div class="flex justify-end items-center space-x-3">
