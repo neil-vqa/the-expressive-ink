@@ -2,7 +2,7 @@
   <div class="container-lside md:flex">
   	<div class="graphic-lside">
   		<div class="graphic-container">
-				<div v-for="pic in content.pics">
+				<div v-for="pic in picList">
 					<img :src="pic" class="step-pic"/>
 				</div>
   		</div>
@@ -107,6 +107,17 @@ export default {
       let b = parseInt(color.substring(4, 6), 16)
       let result = 'rgba(' + r + ',' + g + ',' + b + ',' + 0.85 + ')'
       this.stepRGBA = result;
+		},
+	},
+	computed: {
+		picList() {
+			let pics = [];
+			
+			this.content.texts.forEach(text => {
+				pics.push(text.pic);
+			});
+			
+			return [...new Set(pics)]
 		},
 	},
 }

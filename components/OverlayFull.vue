@@ -2,7 +2,7 @@
   <div class="container-overlay-full">
   	<div class="graphic-overlay-full">
   		<div class="graphic-container">
-				<div v-for="pic in content.pics">
+				<div v-for="pic in picList">
 					<img :src="pic" class="step-pic"/>
 				</div>
   		</div>
@@ -87,16 +87,12 @@ export default {
 			response.element.style.opacity = level;
 		},
 		handleResize(scroller) {
-			//let step = this.$el.querySelector('.step-overlay-full');
 			let graphic = this.$el.querySelector('.graphic-overlay-full');
 			
 			let overlayBg = (this.content.picbg) ? this.content.picbg:this.overlayBgDef;
 			graphic.style.backgroundColor =  overlayBg;
       
-      //let graphicHeight = window.innerHeight;
-      //let graphicMarginTop = (window.innerHeight - graphicHeight) / 2;
       graphic.style.height =  window.innerHeight + "px";
-      //graphic.style.top =  graphicMarginTop + "px";
       
       scroller.resize();
 		},
@@ -107,6 +103,17 @@ export default {
       let b = parseInt(color.substring(4, 6), 16)
       let result = 'rgba(' + r + ',' + g + ',' + b + ',' + 0.85 + ')'
       this.stepRGBA = result;
+		},
+	},
+	computed: {
+		picList() {
+			let pics = [];
+			
+			this.content.texts.forEach(text => {
+				pics.push(text.pic);
+			});
+			
+			return [...new Set(pics)]
 		},
 	},
 }

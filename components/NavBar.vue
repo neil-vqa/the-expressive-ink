@@ -1,13 +1,13 @@
 <template>
-  <div class="relative w-full py-2 border-b-2 border-black">
+  <div class="navbar">
 		<div class="flex justify-between max-w-screen-lg lg:mx-auto px-5">
 		  <div class="flex justify-center sm:justify-start items-center">
 		  	<nuxt-link to="/">
-		  		<h1 class="font-lora font-bold text-xl capitalize hover:text-gray-600">The Expressive Ink</h1>
+		  		<h1 class="font-lora font-bold text-xl capitalize hover:text-gray-500">The Expressive Ink</h1>
 		  	</nuxt-link>
 		  </div>
 		  <div class="flex justify-end items-center space-x-3">
-		  	<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2 hover:text-gray-600 cursor-pointer" 
+		  	<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2 hover:text-gray-500 cursor-pointer" 
 		  		width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" 
 		  		stroke-linejoin="round" @click="expandNav">
 					<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -77,6 +77,11 @@ export default {
 </script>
 
 <style>
+.navbar {
+	@apply relative w-full py-2 text-white;
+	background-color: #555;
+}
+
 .navOverlayEl {
 	background-color: rgba(0,0,0, 0.96);
 }
