@@ -1,56 +1,75 @@
 <template>
 	<div>
 		<NavBar />
-		<div class="max-w-screen-lg lg:mx-auto py-20">
-	      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-10">
-	      	<div v-for="article in articles">
-			      <nuxt-link :to="`/stories/${article.slug}`" class="">
-							<div class="article-card hover:shadow-2xl hover:text-gray-700">{{ article.title }}</div>
-						</nuxt-link>
-					</div>
-	      </div>
+		<div class="wall">
+			<div class="story-wall lg:mx-auto">
+				<div v-show="loading" class="my-10 font-semibold text-2xl text-gray-800 animate-pulse">Loading stories. Please wait.</div>
+				  <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-10">
+				  	<div v-for="story in stories">
+						  <nuxt-link :to="`/stories/${story.slug}-${story.key}`">
+								<div class="story-card space-y-2">
+									<h3 class="text-2xl font-semibold capitalize">{{ story.title }}</h3>
+									<p class="text-gray-700">{{ story.author }}</p>
+		  						<p class="text-gray-700 text-sm">{{ story.date }}</p>
+								</div>
+							</nuxt-link>
+						</div>
+				  </div>
+			</div>
 		</div>
 		<Footer />
   </div>
 </template>
 
 <script>
-const articles = [
-	{title: 'Kimi No Nawa', slug: 'kimi-no-nawa', id: 1 },
-	{title: '5 Centimeters per Second', slug: '5-centimeters-per-second', id: 2 },
-	{title: 'The Garden of Words', slug: 'the-garden-of-words', id: 3 },
-	{title: 'Weathering with You', slug: 'weathering-with-you', id: 4 },
-	{title: 'Weathering with You', slug: 'weathering-with-you', id: 5 },
-	{title: 'Weathering with You', slug: 'weathering-with-you', id: 6 },
-	{title: 'Weathering with You', slug: 'weathering-with-you', id: 7 },
-	{title: 'Weathering with You', slug: 'weathering-with-you', id: 8 },
-]
 
 export default {
 	head() {
 		return {
-			script: [
-				{ src: '' },
-			]
 		}
 	},
 	data() {
 		return {
-			articles: articles,
-			options: {width: 300, padding: 10}
+			stories: '',
+			loading: true,
 		}
 	},
+	async fetch() {
+		let response = await this.$axios.$get('https://inkfunctions.netlify.app/.netlify/functions/stories');
+		this.stories = response.value;
+		this.loading = false;
+	},
+/*	created() {
+		this.getStories();
+	},
 	methods: {
-		append() {
-			
+		getStories() {
+			this.$axios.$get('https://inkfunctions.netlify.app/.netlify/functions/stories')
+				.then(response => {
+					this.stories = response.value;
+					this.loading = false;
+				});
 		},
-	}
+	},*/
 }
 </script>
 
-<style>
-.article-card {
-	@apply px-5 py-4 text-2xl border-b border-gray-500 cursor-pointer;
+<style scoped>
+.wall {
+	background-color: #fff;
+}
+
+.story-wall {
+	@apply max-w-screen-lg min-h-screen py-20;
+}
+
+.story-card {
+	@apply bg-white p-10 border border-black;
+}
+
+.story-card:hover {
+	@apply shadow-xl transition duration-200;
+	transform: scale(1.02);
 }
 
 

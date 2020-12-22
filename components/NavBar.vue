@@ -9,7 +9,7 @@
 		  <div class="flex justify-end items-center space-x-3">
 		  	<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2 hover:text-gray-500 cursor-pointer" 
 		  		width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" 
-		  		stroke-linejoin="round" @click="expandNav">
+		  		stroke-linejoin="round" @click="openNav">
 					<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 					<line x1="4" y1="6" x2="20" y2="6" />
 					<line x1="4" y1="12" x2="20" y2="12" />
@@ -17,12 +17,12 @@
 				</svg>
 		  </div>
 		</div>
-		<div v-show="navOverlay" class="navOverlayEl absolute top-0 w-full min-h-screen overflow-auto z-50">
+		<div v-show="navStatus" class="navOverlayEl fixed top-0 w-full min-h-screen overflow-auto z-50">
 			<div class="max-w-screen-lg h-full lg:mx-auto text-white">
 				<div class="float-right p-5">
 					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-square-x hover:text-gray-600 cursor-pointer" 
 						width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
-						stroke-linejoin="round" @click="expandNav">
+						stroke-linejoin="round" @click="closeNav">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<rect x="4" y="4" width="16" height="16" rx="2" />
 						<path d="M10 10l4 4m0 -4l-4 4" />
@@ -40,7 +40,7 @@
 						</nuxt-link>
 					</div>
 					<div>
-						<nuxt-link to="/stories" class="nav-link hover:text-gray-600">
+						<nuxt-link to="/stories" class="nav-link hover:text-gray-600" @click="closeNav">
 						  Stories
 						</nuxt-link>
 					</div>
@@ -65,13 +65,20 @@
 export default {
 	data() {
 		return {
-			navOverlay: false,
 		}
 	},
 	methods: {
-		expandNav() {
-			this.navOverlay = !this.navOverlay;
+		closeNav() {
+			this.$store.commit('toggleNav', false);
+		},
+		openNav() {
+			this.$store.commit('toggleNav', true);
 		}
+	},
+	computed: {
+		navStatus() {
+			return this.$store.state.navOverlay;
+		},
 	},
 }
 </script>

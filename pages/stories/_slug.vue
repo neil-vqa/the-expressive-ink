@@ -1,6 +1,12 @@
 <template>
   <div>
   	<NavBar />
+  	<div>
+  		<h1 class="min-h-screen flex items-center justify-center font-semibold 
+  				text-2xl text-center text-gray-800 animate-pulse" v-show="loading">
+  			Loading story...
+  		</h1>
+  	</div>
     <div class="container-title">
     	<h1 class="text-4xl md:text-5xl font-semibold">{{ story.title }}</h1>
     	<h2 class="text-xl text-gray-700">{{ story.author }}</h2>
@@ -41,6 +47,9 @@ export default {
 	data() {
 		return {
 			story: '',
+			loading: true,
+			urlFunctions: 'https://inkfunctions.netlify.app/.netlify/functions/stories',
+			key: '',
 		}
 	},
 	created() {
@@ -48,11 +57,15 @@ export default {
 	},
 	methods: {
 		getStory() {
-			this.$axios.$get('https://neil-vqa.github.io/expressive-ink-data/story/')
-				.then((response) => {
+			let path = this.$route.params.slug;
+			this.key = path.split("-").slice(-1)[0];
+			
+			this.$axios.$get(`${this.urlFunctions}?key=${this.key}`)
+				.then(response => {
 					this.story = response;
+					this.loading = false;
 				});
-		}
+		},
 	},
 }
 </script>
