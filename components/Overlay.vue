@@ -93,10 +93,14 @@ export default {
 			let overlayBg = (this.content.picbg) ? this.content.picbg:this.overlayBgDef;
 			graphic.style.backgroundColor =  overlayBg;
       
-      let graphicHeight = window.innerHeight / 1.5;
-      let graphicMarginTop = (window.innerHeight - graphicHeight) / 2;
-      graphic.style.height =  graphicHeight + "px";
-      graphic.style.top =  graphicMarginTop + "px";
+      if (this.content.imageheight == 'full' ) {
+      	graphic.style.height =  window.innerHeight + "px";
+      } else {
+      	let graphicHeight = window.innerHeight / 1.5;
+		    let graphicMarginTop = (window.innerHeight - graphicHeight) / 2;
+		    graphic.style.height =  graphicHeight + "px";
+		    graphic.style.top =  graphicMarginTop + "px";
+      }
       
       scroller.resize();
 		},

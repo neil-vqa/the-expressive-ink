@@ -28,11 +28,6 @@
     				<Overlay :content="content.body" />
     			</client-only>
     		</div>
-    		<div v-if="content.block == 'overlayfull'" class="scrolly-component">
-    			<client-only>
-    				<OverlayFull :content="content.body" />
-    			</client-only>
-    		</div>
     		<!-- end scrolly-components -->
     		
     	</div>

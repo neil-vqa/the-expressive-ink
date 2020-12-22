@@ -40,7 +40,7 @@
 		</div>
 		<div class="show-component">
 			<client-only>
-				<OverlayFull :content="content2.sider" />
+				<Overlay :content="content2.overlay" />
 			</client-only>
 		</div>
 		<div class="py-10 md:py-32 md:px-20">
@@ -68,6 +68,7 @@ const content1 = {
 		stepbg: '#191919',
 		picbg: '#C4D0DF',
 		steptext: '#fff',
+		imageheight: 'center',
 		texts: [
 			{ char: "What is scrollytelling?", pic: "/innovation_1.svg" },
 			{ char: "Basically, new content appears or changes through 'transitions' as readers scroll down or up the web page of your story.", pic: "/innovation_1.svg" },
@@ -84,7 +85,7 @@ const content1 = {
 }};
 
 const content2 = {
-	sider: {
+	overlay: {
 		pics: ["/search_engine__flatline.svg","/coding__flatline.svg","/user_group_flatline.svg","/authentication_flatline.svg",
 			"/report_analysis__flatline.svg","/idea_applications_flatline.svg","/book_lover_flatline.svg"
 		],
@@ -92,16 +93,16 @@ const content2 = {
 		picbg: '#fff',
 		steptext: '#000',
 		imagefit: 'cover',
+		imageheight: 'full',
 		texts: [
 			{ char: "What is The Expressive Ink?", pic: "/search_engine__flatline.svg" },
 			{ char: "The Expressive Ink is a 'new' platform for crafting stories in the scrollytelling format.", pic: "/coding__flatline.svg" },
 			{ char: "Our goal is to make scrollytelling easy for (1) writers, storytellers, content creators, and (2) for the general public as well.", pic: "/user_group_flatline.svg" },
 			{ char: "Users can sign up and use the platform for FREE. It is part of our vision of making scrollytelling open.", pic: "/authentication_flatline.svg" },
-			{ char: "We currently have 4 basic scrollytelling components:", pic: "/report_analysis__flatline.svg" },
+			{ char: "We currently have 3 scrollytelling components:", pic: "/report_analysis__flatline.svg" },
 			{ char: "(1) the 'Right Side Text' component you've seen above.", pic: "/report_analysis__flatline.svg" },
 			{ char: "(2) the 'Left Side Text' component which is the opposite of right side??", pic: "/report_analysis__flatline.svg" },
-			{ char: "(3) the 'Overlay' component which centers the texts.", pic: "/report_analysis__flatline.svg" },
-			{ char: "And (4) the 'Full Overlay' component that you are seeing right now.", pic: "/report_analysis__flatline.svg" },
+			{ char: "And (3) the 'Overlay' component that you are seeing right now.", pic: "/report_analysis__flatline.svg" },
 			{ char: "We are continually developing more components for you and your readers to experience awesomeness. We welcome your awesome suggestions as well.", pic: "/idea_applications_flatline.svg" },
 			{ char: "Be inspired by reading stories featured right now!", pic: "/book_lover_flatline.svg" },
 		]
