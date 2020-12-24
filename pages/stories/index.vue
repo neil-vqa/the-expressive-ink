@@ -1,6 +1,8 @@
 <template>
 	<div>
-		<NavBar />
+		<client-only>
+			<StripeNav />
+		</client-only>
 		<div class="wall">
 			<div class="story-wall lg:mx-auto">
 				<div v-show="loading" class="my-10 font-semibold text-2xl text-gray-800 animate-pulse">Loading stories. Please wait.</div>
@@ -64,12 +66,12 @@ export default {
 }
 
 .story-card {
-	@apply bg-white p-10 border border-black;
+	@apply p-10 border border-gray-500;
 }
 
 .story-card:hover {
-	@apply shadow-xl transition duration-200;
-	transform: scale(1.02);
+	@apply border-0 transition duration-200;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
 

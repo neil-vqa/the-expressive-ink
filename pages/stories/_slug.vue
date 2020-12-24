@@ -1,6 +1,8 @@
 <template>
   <div>
-  	<NavBar />
+  	<client-only>
+			<StripeNav />
+		</client-only>
   	<div>
   		<h1 class="min-h-screen flex items-center justify-center font-semibold 
   				text-2xl text-center text-gray-800 animate-pulse" v-show="loading">
