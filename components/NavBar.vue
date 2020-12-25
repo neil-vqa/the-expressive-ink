@@ -30,9 +30,9 @@
 				</div>
 				<div class="flex flex-col h-full w-full items-center justify-center space-y-5 py-10">
 					<div>
-						<nuxt-link to="#" class="nav-link hover:text-gray-600">
+						<a href="https://inkadmin.netlify.app/" class="nav-link hover:text-gray-600">
 						  Sign Up
-						</nuxt-link>
+						</a>
 					</div>
 					<div>
 						<nuxt-link to="#" class="nav-link hover:text-gray-600">

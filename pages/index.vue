@@ -13,10 +13,10 @@
 		      Add visual transition effects as readers scroll through your stories.
 		    </h1>
 		    <div class="links space-x-5">
-		      <nuxt-link to="/" class="btn-black"
+		      <a href="https://inkadmin.netlify.app/" class="btn-black"
 		      	v-tippy="{ placement : 'top', arrow : true }" content="We'll be delighted to have you here.">
 		        Sign Up
-		      </nuxt-link>
+		      </a>
 		      <nuxt-link to="/stories" class="btn-white"
 		      	v-tippy="{ placement : 'right', arrow : true }" content="Engaging stories by great storytellers.">
 		        Read Stories
@@ -46,9 +46,9 @@
 		<div class="py-10 md:py-32 md:px-20">
 			<h2 class="text-lg md:text-4xl font-semibold text-center tracking-wider mb-10">Sign Up now or take your time reading</h2>
 			<div class="links space-x-3">
-		    <nuxt-link to="/" class="btn-black">
+		    <a href="https://inkadmin.netlify.app/" class="btn-black">
 		      Sign Up
-		    </nuxt-link>
+		    </a>
 		    <nuxt-link to="/stories" class="btn-white">
 		      Read Stories
 		    </nuxt-link>
