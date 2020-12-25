@@ -9,10 +9,15 @@
 				  <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-10 px-5">
 				  	<div v-for="story in stories">
 						  <nuxt-link :to="`/stories/${story.slug}-${story.key}`">
-								<div class="story-card space-y-2">
-									<h3 class="text-2xl font-semibold capitalize">{{ story.title }}</h3>
-									<p class="text-gray-700">{{ story.author }}</p>
-		  						<p class="text-gray-700 text-sm">{{ story.date }}</p>
+								<div class="story-card">
+									<div class="p-8 space-y-1 w-2/3">
+										<h3 class="text-xl font-semibold capitalize truncate">{{ story.title }}</h3>
+										<p class="text-gray-700">{{ story.author }}</p>
+										<p class="text-gray-700 text-sm">{{ story.date }}</p>
+									</div>
+									<div class="w-1/3 thumb">
+										<img :src="story.cover_img" class="w-full h-full object-cover"/>
+									</div>
 								</div>
 							</nuxt-link>
 						</div>
@@ -66,7 +71,7 @@ export default {
 }
 
 .story-card {
-	@apply p-10 border border-gray-500;
+	@apply border border-gray-500 flex justify-between h-40 overflow-hidden;
 }
 
 .story-card:hover {
@@ -74,5 +79,9 @@ export default {
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
+.story-card:hover > .thumb {
+	@apply transition duration-700;
+	transform: scale(1.1);
+}
 
 </style>
