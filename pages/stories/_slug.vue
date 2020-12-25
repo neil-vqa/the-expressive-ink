@@ -121,7 +121,7 @@ export default {
 
 <style>
 .container-title {
-	@apply pt-20 mb-20 text-center;
+	@apply pt-20 mb-20 text-center max-w-screen-lg mx-auto;
 }
 
 .scrolly-component {
