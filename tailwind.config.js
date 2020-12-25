@@ -15,9 +15,16 @@ module.exports = {
     		'screen-2xl': '1440px'
     	},
     },
+    lineClamp: {
+      1: 1,
+      2: 2,
+      3: 3
+    },	
   },
   variants: {},
-  plugins: [],
+  plugins: [
+  	require('tailwindcss-line-clamp'),
+  ],
   purge: {
     // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
     enabled: process.env.NODE_ENV === 'production',

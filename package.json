@@ -14,10 +14,12 @@
     "intersection-observer": "^0.11.0",
     "nuxt": "^2.14.6",
     "scrollama": "^2.2.1",
+    "vue-social-sharing": "^3.0.4",
     "vue-stripe-menu": "^1.5.0",
     "vue-tippy": "^4.7.2"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^3.1.0"
+    "@nuxtjs/tailwindcss": "^3.1.0",
+    "tailwindcss-line-clamp": "^1.0.5"
   }
 }
