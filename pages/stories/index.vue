@@ -5,8 +5,8 @@
 		</client-only>
 		<div class="wall">
 			<div class="story-wall lg:mx-auto">
-				<div v-show="loading" class="my-10 font-semibold text-2xl text-gray-800 animate-pulse">Loading stories. Please wait.</div>
-				  <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-10">
+				<div v-show="loading" class="my-10 font-semibold text-2xl text-gray-800 animate-pulse px-5">Loading stories. Please wait.</div>
+				  <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-10 px-5">
 				  	<div v-for="story in stories">
 						  <nuxt-link :to="`/stories/${story.slug}-${story.key}`">
 								<div class="story-card space-y-2">
@@ -37,11 +37,11 @@ export default {
 		}
 	},
 	async fetch() {
-		let response = await this.$axios.$get('https://inkfunctions.netlify.app/.netlify/functions/stories');
+		let response = await this.$axios.$get('https://inkfunctions.netlify.app/.netlify/functions/stories?status=published');
 		this.stories = response.value;
 		this.loading = false;
 	},
-/*	created() {
+/*	created() { https://inkfunctions.netlify.app
 		this.getStories();
 	},
 	methods: {
