@@ -4,6 +4,7 @@
 			<StripeNav />
 		</client-only>
 		<div class="wall">
+			<NotifBar />
 			<div class="story-wall lg:mx-auto">
 				<div v-if="$fetchState.pending" class="my-10 font-semibold text-2xl text-gray-800 animate-pulse px-5">Loading stories. Please wait.</div>
 				<div v-else-if="$fetchState.error" class="my-10 font-semibold text-2xl text-gray-800 animate-pulse px-5">Sorry. Please reload the page.</div>
