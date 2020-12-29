@@ -26,13 +26,23 @@
 				</div>
 				<hr class="border border-black w-full opacity-75 my-5">
 				<div>
-					<nuxt-link to="#" class="nav-link-stripe hover:text-gray-600">
+					<nuxt-link to="/about-us" class="nav-link-stripe hover:text-gray-600">
 					  About Us
 					</nuxt-link>
 				</div>
 				<div>
-					<nuxt-link to="#" class="nav-link-stripe hover:text-gray-600">
+					<nuxt-link to="/support-us" class="nav-link-stripe hover:text-gray-600">
 					  Support Us
+					</nuxt-link>
+				</div>
+				<div>
+					<nuxt-link to="/privacy" class="nav-link-stripe hover:text-gray-600">
+					  Privacy Policy
+					</nuxt-link>
+				</div>
+				<div>
+					<nuxt-link to="/terms" class="nav-link-stripe hover:text-gray-600">
+					  Terms
 					</nuxt-link>
 				</div>
       </div>
@@ -72,13 +82,23 @@
 					</div>
 					<hr class="border border-black w-full opacity-75 my-5">
 					<div>
-						<nuxt-link to="#" class="nav-link-stripe hover:text-gray-600">
+						<nuxt-link to="/about-us" class="nav-link-stripe hover:text-gray-600">
 							About Us
 						</nuxt-link>
 					</div>
 					<div>
-						<nuxt-link to="#" class="nav-link-stripe hover:text-gray-600">
+						<nuxt-link to="/support-us" class="nav-link-stripe hover:text-gray-600">
 							Support Us
+						</nuxt-link>
+					</div>
+					<div>
+						<nuxt-link to="/privacy" class="nav-link-stripe hover:text-gray-600">
+							Privacy Policy
+						</nuxt-link>
+					</div>
+					<div>
+						<nuxt-link to="/terms" class="nav-link-stripe hover:text-gray-600">
+							Terms
 						</nuxt-link>
 					</div>
 		    </div>

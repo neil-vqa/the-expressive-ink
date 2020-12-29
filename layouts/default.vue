@@ -26,4 +26,12 @@ html {
 .btn-white:hover {
 	@apply bg-black text-white; 
 }
+
+.wall {
+	background-color: #fff;
+}
+
+.story-wall {
+	@apply max-w-screen-lg min-h-screen py-20;
+}
 </style>

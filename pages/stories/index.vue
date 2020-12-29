@@ -54,14 +54,6 @@ export default {
 </script>
 
 <style scoped>
-.wall {
-	background-color: #fff;
-}
-
-.story-wall {
-	@apply max-w-screen-lg min-h-screen py-20;
-}
-
 .story-card {
 	@apply border border-gray-500 flex justify-between h-40 overflow-hidden;
 }
