@@ -13,7 +13,7 @@
 		      Add visual transition effects as readers scroll through your stories.
 		    </h1>
 		    <div class="links space-x-5">
-		      <a href="https://inkadmin.netlify.app/" class="btn-black"
+		      <a :href="$store.state.editorUrl" class="btn-black"
 		      	v-tippy="{ placement : 'top', arrow : true }" content="We'll be delighted to have you here.">
 		        Sign Up
 		      </a>
@@ -46,7 +46,7 @@
 		<div class="py-10 md:py-32 md:px-20">
 			<h2 class="text-lg md:text-4xl font-semibold text-center tracking-wider mb-10">Sign Up now or take your time reading</h2>
 			<div class="links space-x-3">
-		    <a href="https://inkadmin.netlify.app/" class="btn-black">
+		    <a :href="$store.state.editorUrl" class="btn-black">
 		      Sign Up
 		    </a>
 		    <nuxt-link to="/stories" class="btn-white">
@@ -97,7 +97,7 @@ const content2 = {
 		texts: [
 			{ char: "What is The Expressive Ink?", pic: "/search_engine__flatline.svg" },
 			{ char: "The Expressive Ink is a 'new' platform for crafting stories in the scrollytelling format.", pic: "/coding__flatline.svg" },
-			{ char: "Our goal is to make scrollytelling easy for (1) writers, storytellers, content creators, and (2) for the general public as well.", pic: "/user_group_flatline.svg" },
+			{ char: "Our goal is to make scrollytelling easy for (1) content creators, writers, storytellers, and (2) for the general public as well.", pic: "/user_group_flatline.svg" },
 			{ char: "Users can sign up and use the platform for FREE. It is part of our vision of making scrollytelling open.", pic: "/authentication_flatline.svg" },
 			{ char: "We currently have 3 scrollytelling components:", pic: "/report_analysis__flatline.svg" },
 			{ char: "(1) the 'Right Side Text' component you've seen above.", pic: "/report_analysis__flatline.svg" },

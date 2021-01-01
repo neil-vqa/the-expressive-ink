@@ -4,9 +4,8 @@
 			<StripeNav />
 		</client-only>
 		<div class="wall">
-			<NotifBar />
 			<div class="story-wall lg:mx-auto">
-				<div class="mb-10 font-semibold text-2xl text-gray-800 px-5">Trending Stories</div>
+				<div class="mb-10 font-semibold text-xl text-gray-800 px-5">Stories to get you started</div>
 				<div v-if="$fetchState.pending" class="my-10 font-semibold text-2xl text-gray-800 animate-pulse px-5">Loading stories. Please wait.</div>
 				<div v-else-if="$fetchState.error" class="my-10 font-semibold text-2xl text-gray-800 animate-pulse px-5">Sorry. Please reload the page.</div>
 				  <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-10 px-5">
@@ -44,8 +43,8 @@ export default {
 		}
 	},
 	async fetch() {
-		let response = await this.$axios.$get('https://inkfunctions.netlify.app/.netlify/functions/stories?status=published');
-		this.stories = response.value;
+		let response = await this.$axios.$get('https://inkcms.netlify.app/content/serve/getstarted.json');
+		this.stories = response.story;
 	},
 	created() {
 	},

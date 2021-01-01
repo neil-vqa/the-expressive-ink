@@ -10,18 +10,23 @@
     <template #default="{ item }">
       <div class="wrap-content">
         <div>
-					<a href="https://inkadmin.netlify.app/" class="nav-link-stripe hover:text-gray-600">
+					<a :href="$store.state.editorUrl" class="nav-link-stripe hover:text-gray-600">
 					  Sign Up
 					</a>
 				</div>
 				<div>
-					<a href="https://inkadmin.netlify.app/" class="nav-link-stripe hover:text-gray-600">
+					<a :href="$store.state.editorUrl" class="nav-link-stripe hover:text-gray-600">
 					  Login
 					</a>
 				</div>
 				<div>
 					<nuxt-link to="/stories" class="nav-link-stripe hover:text-gray-600">
 					  Stories
+					</nuxt-link>
+				</div>
+				<div>
+					<nuxt-link to="/getting-started" class="nav-link-stripe hover:text-gray-600">
+					  Getting Started
 					</nuxt-link>
 				</div>
 				<hr class="border border-black w-full opacity-75 my-5">
@@ -66,18 +71,23 @@
       <vsm-mob>
       	<div class="wrap-content-mobile">
 		      <div>
-						<nuxt-link to="#" class="nav-link-stripe hover:text-gray-600">
+						<a :href="$store.state.editorUrl" class="nav-link-stripe hover:text-gray-600">
 							Sign Up
-						</nuxt-link>
+						</a>
 					</div>
 					<div>
-						<nuxt-link to="#" class="nav-link-stripe hover:text-gray-600">
+						<a :href="$store.state.editorUrl" class="nav-link-stripe hover:text-gray-600">
 							Login
-						</nuxt-link>
+						</a>
 					</div>
 					<div>
 						<nuxt-link to="/stories" class="nav-link-stripe hover:text-gray-600">
 							Stories
+						</nuxt-link>
+					</div>
+					<div>
+						<nuxt-link to="/getting-started" class="nav-link-stripe hover:text-gray-600">
+							Getting Started
 						</nuxt-link>
 					</div>
 					<hr class="border border-black w-full opacity-75 my-5">
