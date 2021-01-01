@@ -6,10 +6,21 @@
 		<div class="wall">
 			<NotifBar />
 			<div class="story-wall lg:mx-auto">
-				<div class="mb-10 font-semibold text-2xl text-gray-800 px-5">Trending Stories</div>
+				<div class="inline-block space-y-2 sm:flex sm:space-y-0 justify-between items-center mb-10 px-5">
+					<div class="font-semibold text-2xl text-gray-800">Trending Stories</div>
+					<div class="flex items-center space-x-1 cursor-pointer hover:text-gray-500" @click="$fetch">
+						<p>Refresh list</p>
+						<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-refresh" width="20" height="20" 
+							viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+							<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+							<path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" />
+							<path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" />
+						</svg>
+					</div>
+				</div>
 				<div v-if="$fetchState.pending" class="my-10 font-semibold text-2xl text-gray-800 animate-pulse px-5">Loading stories. Please wait.</div>
 				<div v-else-if="$fetchState.error" class="my-10 font-semibold text-2xl text-gray-800 animate-pulse px-5">Sorry. Please reload the page.</div>
-				  <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-10 px-5">
+				  <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-10 px-5">
 				  	<div v-for="story in stories">
 						  <nuxt-link :to="`/stories/${story.slug}-${story.key}`">
 								<div class="story-card">
