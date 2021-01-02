@@ -88,6 +88,7 @@ export default {
 			title: `${this.story.title} | The Expressive Ink`,
 			meta: [
 				{ hid: 'description', name: 'description', content: this.story.excerpt },
+				{ hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
 				{ hid: 'og:title', name: 'og:title', content: `${this.story.title} | The Expressive Ink` },
 				{ hid: 'og:description', name: 'og:description', content: this.story.excerpt },
 				{ hid: 'og:image', name: 'og:image', content: this.story.cover_img },
@@ -113,7 +114,7 @@ export default {
 	},
 	computed: {
 		shareURL() {
-			return `https://theexpressiveink.netlify.app/stories/${ this.$route.params.slug }`;
+			return `https://theexpressiveink.com/stories/${ this.$route.params.slug }`;
 		}
 	},
 }
