@@ -3,16 +3,6 @@
   	<client-only>
 			<StripeNav />
 		</client-only>
-  	<div>
-  		<h1 class="min-h-screen flex items-center justify-center font-semibold 
-  				text-2xl text-center text-gray-800 animate-pulse" v-if="$fetchState.pending">
-  			Loading story...
-  		</h1>
-  		<h1 class="min-h-screen flex items-center justify-center font-semibold 
-  				text-2xl text-center text-gray-800" v-else-if="$fetchState.error">
-  			Sorry. Please reload the page.
-  		</h1>
-  	</div>
     <div class="container-title">
     	<h1 class="text-4xl md:text-5xl font-semibold">{{ story.title }}</h1>
     	<h2 class="text-xl text-gray-700">{{ story.author }}</h2>
@@ -88,25 +78,19 @@ export default {
 			title: `${this.story.title} | The Expressive Ink`,
 			meta: [
 				{ hid: 'description', name: 'description', content: this.story.excerpt },
-				{ hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
 				{ hid: 'og:title', name: 'og:title', content: `${this.story.title} | The Expressive Ink` },
 				{ hid: 'og:description', name: 'og:description', content: this.story.excerpt },
 				{ hid: 'og:image', name: 'og:image', content: this.story.cover_img },
+				{ hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
 			]
 		}
 	},
-	data() {
-		return {
-			story: '',
-			urlFunctions: 'https://inkfunctions.netlify.app/.netlify/functions/stories',
-			key: '',
-		}
-	},
-	async fetch() {
-		let path = this.$route.params.slug;
-		this.key = path.split("-").slice(-1)[0];
+	async asyncData({ params, $axios }) {
+		let path = params.slug;
+		let key = path.split("-").slice(-1)[0];
+		const story = await $axios.$get(`https://inkfunctions.netlify.app/.netlify/functions/stories?key=${key}`);
 		
-		this.story = await this.$axios.$get(`${this.urlFunctions}?key=${this.key}`);
+		return { story }
 	},
 	created() {
 	},
@@ -114,7 +98,7 @@ export default {
 	},
 	computed: {
 		shareURL() {
-			return `https://theexpressiveink.com/stories/${ this.$route.params.slug }`;
+			return `https://theexpressiveink.com/stories/${this.$route.params.slug}`;
 		}
 	},
 }
