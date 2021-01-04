@@ -82,6 +82,9 @@ export default {
 				{ hid: 'og:description', name: 'og:description', content: this.story.excerpt },
 				{ hid: 'og:image', name: 'og:image', content: this.story.cover_img },
 				{ hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
+				{ hid: 'twitter:title', name: 'twitter:title', content: this.story.title },
+				{ hid: 'twitter:description', name: 'twitter:description', content: this.story.excerpt },
+				{ hid: 'twitter:image', name: 'twitter:image', content: this.story.cover_img },
 			]
 		}
 	},
