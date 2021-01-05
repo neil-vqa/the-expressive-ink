@@ -3,6 +3,14 @@
   	<client-only>
 			<StripeNav />
 		</client-only>
+		
+		<!-- loaders -->
+		<div class="flex flex-col justify-center items-center">
+		  <div v-if="$fetchState.pending" class="my-10 font-semibold text-2xl text-gray-800 animate-pulse px-5">Loading stories. Please wait.</div>
+			<div v-else-if="$fetchState.error" class="my-10 font-semibold text-2xl text-gray-800 animate-pulse px-5">Sorry. Please reload the page.</div>
+		</div>
+		
+		<!-- head -->
     <div class="container-title">
     	<h1 class="text-4xl md:text-5xl font-semibold">{{ story.title }}</h1>
     	<h2 class="text-xl text-gray-700">{{ story.author }}</h2>
@@ -37,7 +45,7 @@
     	</div>
     </div>
     
-     <!-- social share buttons -->
+     <!-- social share buttons 
     <div class="flex justify-center mb-20 space-x-2">
     	<ShareNetwork
 					network="facebook"
@@ -65,19 +73,28 @@
 					</svg>
 					<div>Tweet</div>
 			</ShareNetwork>
-    </div>
+    </div> 
+     
+    <SocialHead
+      :title="story.title"
+      :description="story.excerpt"
+      :image="story.cover_img"
+    />		-->
     
     <Footer />
   </div>
 </template>
 
 <script>
+import { metaTags } from '../../utils/meta';
+
 export default {
 	head() {
 		return {
 			title: `${this.story.title} | The Expressive Ink`,
-			meta: [
-				{ hid: 'description', name: 'description', content: this.story.excerpt },
+			meta: metaTags({ title: this.story.title, excerpt: this.story.excerpt, cover_img: this.story.cover_img })
+			/*meta: [
+			{ hid: 'description', name: 'description', content: this.story.excerpt },
 				{ hid: 'og:title', name: 'og:title', content: `${this.story.title} | The Expressive Ink` },
 				{ hid: 'og:description', name: 'og:description', content: this.story.excerpt },
 				{ hid: 'og:image', name: 'og:image', content: this.story.cover_img },
@@ -85,24 +102,40 @@ export default {
 				{ hid: 'twitter:title', name: 'twitter:title', content: this.story.title },
 				{ hid: 'twitter:description', name: 'twitter:description', content: this.story.excerpt },
 				{ hid: 'twitter:image', name: 'twitter:image', content: this.story.cover_img },
-			]
+			] */
 		}
 	},
-	async asyncData({ params, $axios }) {
+	data() {
+		return {
+			story: '',
+		}
+	},
+	/*async asyncData({ params, $axios }) {
 		let path = params.slug;
 		let key = path.split("-").slice(-1)[0];
-		const story = await $axios.$get(`https://inkfunctions.netlify.app/.netlify/functions/stories?key=${key}`);
+		let baseAPI = 'https://inkfunctions.netlify.app/.netlify/functions/stories';
+		const story = await $axios.$get(`${baseAPI}?key=${key}`);
 		
-		return { story }
+		if (!story.error) {
+			return { story }
+		} else {
+			console.log(story.error);
+		}
+	},*/
+	async fetch() {
+		let path = this.$route.params.slug;
+		let key = path.split("-").slice(-1)[0];
+		this.story = await this.$axios.$get(`https://inkfunctions.netlify.app/.netlify/functions/stories?key=${key}`);
 	},
 	created() {
+		this.$fetch();
 	},
 	methods: {
 	},
 	computed: {
-		shareURL() {
-			return `https://theexpressiveink.com/stories/${this.$route.params.slug}`;
-		}
+	//	shareURL() {
+	//		return `https://theexpressiveink.com/stories/${this.$route.params.slug}`;
+	//	}
 	},
 }
 </script>

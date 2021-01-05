@@ -8,12 +8,10 @@
 export default {
 	props: {
     title: {
-      type: String,
-      required: true
+      type: String
     },
     description: {
-      type: String,
-      required: true
+      type: String
     },
     image: {
       type: String,

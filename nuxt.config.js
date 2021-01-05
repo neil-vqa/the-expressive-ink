@@ -1,4 +1,6 @@
 export default {
+
+	ssr: true,
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'server',
 
@@ -47,6 +49,6 @@ export default {
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
   	transpile: ['vue-tippy'],
-  	publicPath: process.env.PUBLIC_URL,
+  	//publicPath: process.env.PUBLIC_URL,
   }
 }
