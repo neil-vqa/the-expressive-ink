@@ -1,13 +1,15 @@
 <template>
   <div>
   	<client-only>
-			<StripeNav />
+			<transition appear name="fade">
+				<StripeNav />
+			</transition>
 		</client-only>
 		
 		<!-- loaders -->
-		<div class="flex flex-col justify-center items-center">
-		  <div v-if="$fetchState.pending" class="my-10 font-semibold text-2xl text-gray-800 animate-pulse px-5">Loading stories. Please wait.</div>
-			<div v-else-if="$fetchState.error" class="my-10 font-semibold text-2xl text-gray-800 animate-pulse px-5">Sorry. Please reload the page.</div>
+		<div class="">
+		  <div v-if="$fetchState.pending" class="loading-state">Loading story. Please wait.</div>
+			<div v-else-if="$fetchState.error" class="loading-state">Sorry. Please reload the page.</div>
 		</div>
 		
 		<!-- head -->
@@ -153,5 +155,8 @@ export default {
 	@apply flex cursor-pointer items-center bg-gray-600 p-4 text-white text-sm;
 }
 
+.loading-state {
+	@apply flex flex-col justify-center items-center font-semibold text-2xl text-gray-800 animate-pulse min-h-screen;
+}
 
 </style>

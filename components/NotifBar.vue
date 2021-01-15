@@ -1,12 +1,14 @@
 <template>
 	<div class="hidden sm:block">
 		<div v-if="notifs">
-			<div v-for="notif in notifs">
-				<div class="bg-blue-700 text-white text-base flex space-x-5 justify-center px-10 py-2">
-					<p class="font-bold uppercase">{{ notif.name }}</p>
-					<p>{{ notif.description }}</p>
+			<transition appear name="fade">
+				<div v-for="notif in notifs">
+					<div class="bg-blue-700 text-white text-base flex space-x-5 justify-center px-10 py-2">
+						<p class="font-bold uppercase">{{ notif.name }}</p>
+						<p>{{ notif.description }}</p>
+					</div>
 				</div>
-			</div>
+			</transition>
 		</div>
   </div>
 </template>

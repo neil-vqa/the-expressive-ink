@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Nuxt />
+    <Nuxt keep-alive />
   </div>
 </template>
 
@@ -33,5 +33,13 @@ html {
 
 .story-wall {
 	@apply max-w-screen-lg min-h-screen py-20;
+}
+
+.fade-enter {
+	opacity: 0;
+}
+
+.fade-enter-active {
+	transition: opacity 0.4s ease-in;
 }
 </style>

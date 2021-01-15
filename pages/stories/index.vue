@@ -1,7 +1,9 @@
 <template>
 	<div>
 		<client-only>
-			<StripeNav />
+			<transition appear name="fade">
+				<StripeNav />
+			</transition>
 		</client-only>
 		<div class="wall">
 			<NotifBar />
@@ -20,22 +22,22 @@
 				</div>
 				<div v-if="$fetchState.pending" class="my-10 font-semibold text-2xl text-gray-800 animate-pulse px-5">Loading stories. Please wait.</div>
 				<div v-else-if="$fetchState.error" class="my-10 font-semibold text-2xl text-gray-800 animate-pulse px-5">Sorry. Please reload the page.</div>
-				  <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-10 px-5">
-				  	<div v-for="story in stories">
-						  <nuxt-link :to="`/stories/${story.slug}-${story.key}`">
-								<div class="story-card">
-									<div class="p-8 space-y-1 w-2/3">
-										<h3 class="text-lg font-semibold capitalize clamp-2">{{ story.title }}</h3>
-										<p class="text-gray-700 text-sm">{{ story.author }}</p>
-										<p class="text-gray-700 text-sm">{{ story.date }}</p>
-									</div>
-									<div class="w-1/3 thumb">
-										<img :src="story.cover_img" class="w-full h-full object-cover"/>
-									</div>
+				<div v-else class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-10 px-5">
+					<div v-for="story in stories">
+						<nuxt-link :to="`/stories/${story.slug}-${story.key}`">
+							<div class="story-card">
+								<div class="p-8 space-y-1 w-2/3">
+									<h3 class="text-lg font-semibold capitalize clamp-2">{{ story.title }}</h3>
+									<p class="text-gray-700 text-sm">{{ story.author }}</p>
+									<p class="text-gray-700 text-sm">{{ story.date }}</p>
 								</div>
-							</nuxt-link>
-						</div>
-				  </div>
+								<div class="w-1/3 thumb">
+									<img :src="story.cover_img" class="w-full h-full object-cover"/>
+								</div>
+							</div>
+						</nuxt-link>
+					</div>
+				</div>
 			</div>
 		</div>
 		<Footer />
@@ -59,9 +61,9 @@ export default {
 		this.stories = response.value;
 	},
 	created() {
+		this.$fetch();
 	},
 	mounted() {
-		this.$fetch();
 	},
 	methods: {
 	},
@@ -82,5 +84,6 @@ export default {
 	@apply transition duration-700;
 	transform: scale(1.1);
 }
+
 
 </style>
