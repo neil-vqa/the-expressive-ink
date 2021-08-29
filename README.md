@@ -1,6 +1,4 @@
-# the-expressive-ink
-
-![tei](static/tei-logo.svg)
+![tei](static/tei-logo.png)
 
 Platform for creating scrollytelling articles. Inspired by ABC News' [odyssey-scrollyteller](https://github.com/abcnews/odyssey-scrollyteller) stories.
 
