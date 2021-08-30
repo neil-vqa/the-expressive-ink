@@ -1,16 +1,6 @@
 <template>
   <div>
     <NavBar />
-    <!-- loaders -->
-    <!-- <div class="">
-      <div v-if="$fetchState.pending" class="loading-state">
-        Loading story. Please wait.
-      </div>
-      <div v-else-if="$fetchState.error" class="loading-state">
-        Sorry. Please reload the page.
-      </div>
-    </div> -->
-
     <!-- head -->
     <div class="container-title">
       <h1 class="text-4xl md:text-5xl font-semibold">{{ story.title }}</h1>
@@ -129,18 +119,6 @@ export default {
       story: "",
     };
   },
-  /*async asyncData({ params, $axios }) {
-		let path = params.slug;
-		let key = path.split("-").slice(-1)[0];
-		let baseAPI = 'https://inkfunctions.netlify.app/.netlify/functions/stories';
-		const story = await $axios.$get(`${baseAPI}?key=${key}`);
-		
-		if (!story.error) {
-			return { story }
-		} else {
-			console.log(story.error);
-		}
-	},*/
   created() {
     this.fetchStory();
   },
@@ -156,11 +134,6 @@ export default {
           this.story = response;
         });
     },
-  },
-  computed: {
-    //	shareURL() {
-    //		return `https://theexpressiveink.com/stories/${this.$route.params.slug}`;
-    //	}
   },
 };
 </script>
