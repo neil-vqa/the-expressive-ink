@@ -1,53 +1,66 @@
 <template>
   <div>
-  	<client-only>
-			<transition appear name="fade">
-				<StripeNav />
-			</transition>
-		</client-only>
-		
-		<!-- loaders -->
-		<div class="">
-		  <div v-if="$fetchState.pending" class="loading-state">Loading story. Please wait.</div>
-			<div v-else-if="$fetchState.error" class="loading-state">Sorry. Please reload the page.</div>
-		</div>
-		
-		<!-- head -->
-    <div class="container-title">
-    	<h1 class="text-4xl md:text-5xl font-semibold">{{ story.title }}</h1>
-    	<h2 class="text-xl text-gray-700">{{ story.author }}</h2>
-    	<p class="text-xl text-gray-700">{{ story.date }}</p>
+    <StripeNav />
+    <!-- loaders -->
+    <div class="">
+      <div v-if="$fetchState.pending" class="loading-state">
+        Loading story. Please wait.
+      </div>
+      <div v-else-if="$fetchState.error" class="loading-state">
+        Sorry. Please reload the page.
+      </div>
     </div>
-    
+
+    <!-- head -->
+    <div class="container-title">
+      <h1 class="text-4xl md:text-5xl font-semibold">{{ story.title }}</h1>
+      <h2 class="text-xl text-gray-700">{{ story.author }}</h2>
+      <p class="text-xl text-gray-700">{{ story.date }}</p>
+    </div>
+
     <!-- body -->
     <div>
-    	<div v-for="content in story.contents" :key="content.index" class="">
-    		<div v-if="content.block == 'heading'" class="mb-10 text-3xl text-center font-semibold">{{ content.body }}</div>
-    		<div v-if="content.block == 'text'" class="max-w-screen-md mx-auto px-10 mb-10 text-xl scrolly-component">{{ content.body }}</div>
-    		<div v-if="content.block == 'image'" class="mb-10 w-3/4 mx-auto flex justify-center"><img :src="content.body"/></div>
-    		
-    		<!-- scrolly-components -->
-    		<div v-if="content.block == 'sider'" class="scrolly-component">
-    			<client-only>
-    				<SideRside :content="content.body" />
-    			</client-only>
-    		</div>
-    		<div v-if="content.block == 'sidel'" class="scrolly-component">
-    			<client-only>
-    				<SideLside :content="content.body" />
-    			</client-only>
-    		</div>
-    		<div v-if="content.block == 'overlay'" class="scrolly-component">
-    			<client-only>
-    				<Overlay :content="content.body" />
-    			</client-only>
-    		</div>
-    		<!-- end scrolly-components -->
-    		
-    	</div>
+      <div v-for="content in story.contents" :key="content.index" class="">
+        <div
+          v-if="content.block == 'heading'"
+          class="mb-10 text-3xl text-center font-semibold"
+        >
+          {{ content.body }}
+        </div>
+        <div
+          v-if="content.block == 'text'"
+          class="max-w-screen-md mx-auto px-10 mb-10 text-xl scrolly-component"
+        >
+          {{ content.body }}
+        </div>
+        <div
+          v-if="content.block == 'image'"
+          class="mb-10 w-3/4 mx-auto flex justify-center"
+        >
+          <img :src="content.body" />
+        </div>
+
+        <!-- scrolly-components -->
+        <div v-if="content.block == 'sider'" class="scrolly-component">
+          <client-only>
+            <SideRside :content="content.body" />
+          </client-only>
+        </div>
+        <div v-if="content.block == 'sidel'" class="scrolly-component">
+          <client-only>
+            <SideLside :content="content.body" />
+          </client-only>
+        </div>
+        <div v-if="content.block == 'overlay'" class="scrolly-component">
+          <client-only>
+            <Overlay :content="content.body" />
+          </client-only>
+        </div>
+        <!-- end scrolly-components -->
+      </div>
     </div>
-    
-     <!-- social share buttons 
+
+    <!-- social share buttons 
     <div class="flex justify-center mb-20 space-x-2">
     	<ShareNetwork
 					network="facebook"
@@ -82,20 +95,24 @@
       :description="story.excerpt"
       :image="story.cover_img"
     />		-->
-    
+
     <Footer />
   </div>
 </template>
 
 <script>
-import { metaTags } from '../../utils/meta';
+import { metaTags } from "../../utils/meta";
 
 export default {
-	head() {
-		return {
-			title: `${this.story.title} | The Expressive Ink`,
-			meta: metaTags({ title: this.story.title, excerpt: this.story.excerpt, cover_img: this.story.cover_img })
-			/*meta: [
+  head() {
+    return {
+      title: `${this.story.title} | The Expressive Ink`,
+      meta: metaTags({
+        title: this.story.title,
+        excerpt: this.story.excerpt,
+        cover_img: this.story.cover_img,
+      }),
+      /*meta: [
 			{ hid: 'description', name: 'description', content: this.story.excerpt },
 				{ hid: 'og:title', name: 'og:title', content: `${this.story.title} | The Expressive Ink` },
 				{ hid: 'og:description', name: 'og:description', content: this.story.excerpt },
@@ -105,14 +122,14 @@ export default {
 				{ hid: 'twitter:description', name: 'twitter:description', content: this.story.excerpt },
 				{ hid: 'twitter:image', name: 'twitter:image', content: this.story.cover_img },
 			] */
-		}
-	},
-	data() {
-		return {
-			story: '',
-		}
-	},
-	/*async asyncData({ params, $axios }) {
+    };
+  },
+  data() {
+    return {
+      story: "",
+    };
+  },
+  /*async asyncData({ params, $axios }) {
 		let path = params.slug;
 		let key = path.split("-").slice(-1)[0];
 		let baseAPI = 'https://inkfunctions.netlify.app/.netlify/functions/stories';
@@ -124,39 +141,39 @@ export default {
 			console.log(story.error);
 		}
 	},*/
-	async fetch() {
-		let path = this.$route.params.slug;
-		let key = path.split("-").slice(-1)[0];
-		this.story = await this.$axios.$get(`https://inkfunctions.netlify.app/.netlify/functions/stories?key=${key}`);
-	},
-	created() {
-		this.$fetch();
-	},
-	methods: {
-	},
-	computed: {
-	//	shareURL() {
-	//		return `https://theexpressiveink.com/stories/${this.$route.params.slug}`;
-	//	}
-	},
-}
+  async fetch() {
+    let path = this.$route.params.slug;
+    let key = path.split("-").slice(-1)[0];
+    this.story = await this.$axios.$get(
+      `https://inkfunctions.netlify.app/.netlify/functions/stories?key=${key}`
+    );
+  },
+  created() {
+    this.$fetch();
+  },
+  methods: {},
+  computed: {
+    //	shareURL() {
+    //		return `https://theexpressiveink.com/stories/${this.$route.params.slug}`;
+    //	}
+  },
+};
 </script>
 
 <style>
 .container-title {
-	@apply pt-20 mb-20 text-center max-w-screen-lg mx-auto;
+  @apply pt-20 mb-20 text-center max-w-screen-lg mx-auto;
 }
 
 .scrolly-component {
-	@apply mb-10 tracking-wide leading-relaxed;
+  @apply mb-10 tracking-wide leading-relaxed;
 }
 
 .share-btn {
-	@apply flex cursor-pointer items-center bg-gray-600 p-4 text-white text-sm;
+  @apply flex cursor-pointer items-center bg-gray-600 p-4 text-white text-sm;
 }
 
 .loading-state {
-	@apply flex flex-col justify-center items-center font-semibold text-2xl text-gray-800 animate-pulse min-h-screen;
+  @apply flex flex-col justify-center items-center font-semibold text-2xl text-gray-800 animate-pulse min-h-screen;
 }
-
 </style>
