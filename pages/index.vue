@@ -34,22 +34,10 @@
           Add visual transition effects as readers scroll through your stories.
         </h1>
         <div class="links space-x-5">
-          <a
-            :href="$store.state.editorUrl"
-            class="btn-black"
-            v-tippy="{ placement: 'top', arrow: true }"
-            content="We'll be delighted to have you here."
-          >
+          <a href="https://app.theexpressiveink.com" class="btn-black">
             Sign Up
           </a>
-          <nuxt-link
-            to="/stories"
-            class="btn-white"
-            v-tippy="{ placement: 'right', arrow: true }"
-            content="Engaging stories by great storytellers."
-          >
-            Read Stories
-          </nuxt-link>
+          <nuxt-link to="/stories" class="btn-white"> Read Stories </nuxt-link>
         </div>
       </div>
       <!-- end hero section -->
