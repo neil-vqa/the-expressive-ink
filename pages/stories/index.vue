@@ -1,6 +1,6 @@
 <template>
   <div>
-    <StripeNav />
+    <NavBar />
     <div class="wall">
       <NotifBar />
       <div class="story-wall lg:mx-auto">
