@@ -1,6 +1,6 @@
 <template>
   <div>
-    <StripeNav />
+    <NavBar />
     <div class="wall">
       <div class="story-wall lg:mx-auto">
         <h1 class="text-5xl text-center">Support Us</h1>
@@ -48,11 +48,3 @@ export default {
   },
 };
 </script>
-
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-</style>
