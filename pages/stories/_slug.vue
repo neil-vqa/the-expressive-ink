@@ -1,6 +1,6 @@
 <template>
   <div>
-    <StripeNav />
+    <NavBar />
     <!-- loaders -->
     <div class="">
       <div v-if="$fetchState.pending" class="loading-state">
