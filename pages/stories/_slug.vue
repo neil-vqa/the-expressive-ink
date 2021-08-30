@@ -1,11 +1,6 @@
 <template>
   <div>
-    <client-only>
-      <transition appear name="fade">
-        <StripeNav />
-      </transition>
-    </client-only>
-
+    <StripeNav />
     <!-- loaders -->
     <div class="">
       <div v-if="$fetchState.pending" class="loading-state">

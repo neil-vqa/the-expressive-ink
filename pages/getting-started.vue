@@ -1,8 +1,6 @@
 <template>
   <div>
-    <client-only>
-      <StripeNav />
-    </client-only>
+    <StripeNav />
     <div class="wall">
       <div class="story-wall lg:mx-auto">
         <div class="mb-10 font-semibold text-xl text-gray-800 px-5">

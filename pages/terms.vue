@@ -1,8 +1,6 @@
 <template>
   <div>
-    <client-only>
-      <StripeNav />
-    </client-only>
+    <StripeNav />
     <div class="wall">
       <div class="story-wall lg:mx-auto">
         <h1 class="text-5xl text-center">Terms of Service</h1>

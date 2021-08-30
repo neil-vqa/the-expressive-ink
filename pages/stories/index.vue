@@ -1,10 +1,6 @@
 <template>
   <div>
-    <client-only>
-      <transition appear name="fade">
-        <StripeNav />
-      </transition>
-    </client-only>
+    <StripeNav />
     <div class="wall">
       <NotifBar />
       <div class="story-wall lg:mx-auto">
