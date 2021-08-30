@@ -2,14 +2,14 @@
   <div>
     <NavBar />
     <!-- loaders -->
-    <div class="">
+    <!-- <div class="">
       <div v-if="$fetchState.pending" class="loading-state">
         Loading story. Please wait.
       </div>
       <div v-else-if="$fetchState.error" class="loading-state">
         Sorry. Please reload the page.
       </div>
-    </div>
+    </div> -->
 
     <!-- head -->
     <div class="container-title">
@@ -141,17 +141,22 @@ export default {
 			console.log(story.error);
 		}
 	},*/
-  async fetch() {
-    let path = this.$route.params.slug;
-    let key = path.split("-").slice(-1)[0];
-    this.story = await this.$axios.$get(
-      `https://inkfunctions.netlify.app/.netlify/functions/stories?key=${key}`
-    );
-  },
   created() {
-    this.$fetch();
+    this.fetchStory();
   },
-  methods: {},
+  methods: {
+    fetchStory() {
+      let path = this.$route.params.slug;
+      let key = path.split("-").slice(-1)[0];
+      this.$axios
+        .$get(
+          `https://inkfunctions.netlify.app/.netlify/functions/stories?key=${key}`
+        )
+        .then((response) => {
+          this.story = response;
+        });
+    },
+  },
   computed: {
     //	shareURL() {
     //		return `https://theexpressiveink.com/stories/${this.$route.params.slug}`;
