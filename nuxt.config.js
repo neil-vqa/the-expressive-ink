@@ -1,8 +1,6 @@
 export default {
-
-	ssr: true,
   // Target (https://go.nuxtjs.dev/config-target)
-  target: 'server',
+  target: 'static',
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -23,8 +21,8 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-  	{ src: '~/plugins/vue-tippy.js', mode: 'client' },
-  	{ src: '~/plugins/vue-stripe-menu.js', mode: 'client' }
+    { src: '~/plugins/vue-tippy.js', mode: 'client' },
+    { src: '~/plugins/vue-stripe-menu.js', mode: 'client' }
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -48,7 +46,7 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-  	transpile: ['vue-tippy'],
-  	//publicPath: process.env.PUBLIC_URL,
+    transpile: ['vue-tippy'],
+    //publicPath: process.env.PUBLIC_URL,
   }
 }
