@@ -15,7 +15,7 @@ The platform follows the JAMstack architecture deployed on Netlify. This repo co
 
 ## Screenshots
 
-![shot-1](https://res.cloudinary.com/nvqacloud/image/upload/v1622900347/scrolly-01_nahwbw.png)
+![shot-1](https://res.cloudinary.com/nvqacloud/image/upload/v1630377894/scroll-01-new-aug31_fmuoda.png)
 
 ![shot-2](https://res.cloudinary.com/nvqacloud/image/upload/v1622900349/scrolly-02_xwlndq.png)
 
