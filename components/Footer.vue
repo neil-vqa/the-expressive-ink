@@ -19,6 +19,9 @@
         pb-5
       "
     >
+      <nuxt-link to="/stories" class="text-white hover:underline">
+        Stories
+      </nuxt-link>
       <nuxt-link to="/getting-started" class="text-white hover:underline">
         Getting Started
       </nuxt-link>

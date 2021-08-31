@@ -16,8 +16,7 @@
             sm:mx-auto
           "
         >
-          You already have great stories. <br />
-          Let's craft them for the modern web.
+          Your stories crafted for the modern web.
         </h1>
         <h1
           class="
@@ -39,6 +38,15 @@
           </a>
           <nuxt-link to="/stories" class="btn-white"> Read Stories </nuxt-link>
         </div>
+        <p class="text-sm text-gray-600 text-center pt-6">
+          <span>Already an editor?</span>
+          <a
+            href="https://app.theexpressiveink.com"
+            class="text-blue-700 hover:underline"
+          >
+            Login here.
+          </a>
+        </p>
       </div>
       <!-- end hero section -->
     </div>
@@ -78,7 +86,9 @@
         Sign Up now or take your time reading
       </h2>
       <div class="links space-x-3">
-        <a :href="$store.state.editorUrl" class="btn-black"> Sign Up </a>
+        <a href="https://app.theexpressiveink.com" class="btn-black">
+          Sign Up
+        </a>
         <nuxt-link to="/stories" class="btn-white"> Read Stories </nuxt-link>
       </div>
     </div>

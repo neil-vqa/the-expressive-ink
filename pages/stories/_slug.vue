@@ -3,14 +3,33 @@
     <NavBar />
     <!-- head -->
     <div class="container-title">
+      <!-- loading skeleton -->
+      <div v-if="loader" class="w-3/4 mx-auto">
+        <div class="animate-pulse space-y-3 flex flex-col items-center">
+          <div class="bg-gray-500 w-full h-20"></div>
+          <div class="bg-gray-500 w-3/4 h-20"></div>
+        </div>
+      </div>
+      <!-- story head -->
       <h1 class="text-4xl md:text-5xl font-semibold">{{ story.title }}</h1>
       <h2 class="text-xl text-gray-700">{{ story.author }}</h2>
       <p class="text-xl text-gray-700">{{ story.date }}</p>
     </div>
 
     <!-- body -->
-    <div>
-      <div v-for="content in story.contents" :key="content.index" class="">
+    <div class="pb-10">
+      <!-- loading skeleton -->
+      <div v-if="loader" class="h-screen w-3/4 mx-auto">
+        <div class="animate-pulse space-y-3 flex flex-col">
+          <div class="bg-gray-500 w-full h-20"></div>
+          <div class="bg-gray-500 w-2/3 h-20"></div>
+          <div class="bg-gray-500 w-1/2 h-64"></div>
+          <div class="bg-gray-500 w-4/5 h-20"></div>
+          <div class="bg-gray-500 w-2/3 h-20"></div>
+        </div>
+      </div>
+      <!-- story content -->
+      <div v-for="content in story.contents" :key="content.index">
         <div
           v-if="content.block == 'heading'"
           class="mb-10 text-3xl text-center font-semibold"
@@ -117,6 +136,7 @@ export default {
   data() {
     return {
       story: "",
+      loader: true,
     };
   },
   created() {
@@ -131,6 +151,7 @@ export default {
           `https://inkfunctions.netlify.app/.netlify/functions/stories?key=${key}`
         )
         .then((response) => {
+          this.loader = false;
           this.story = response;
         });
     },
