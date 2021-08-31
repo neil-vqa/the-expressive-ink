@@ -38,6 +38,15 @@
           </a>
           <nuxt-link to="/stories" class="btn-white"> Read Stories </nuxt-link>
         </div>
+        <p class="text-sm text-gray-600 text-center pt-6">
+          <span>Already an editor?</span>
+          <a
+            href="https://app.theexpressiveink.com"
+            class="text-blue-700 hover:underline"
+          >
+            Login here.
+          </a>
+        </p>
       </div>
       <!-- end hero section -->
     </div>
