@@ -133,29 +133,38 @@ export default {
 			] */
     };
   },
+  async fetch() {
+    let path = this.$route.params.slug;
+    let key = path.split("-").slice(-1)[0];
+    let singleStory = await this.$axios.$get(
+      `https://inkfunctions.netlify.app/.netlify/functions/stories?key=${key}`
+    );
+    this.loader = false;
+    this.story = singleStory;
+  },
   data() {
     return {
       story: "",
       loader: true,
     };
   },
-  created() {
-    this.fetchStory();
-  },
-  methods: {
-    fetchStory() {
-      let path = this.$route.params.slug;
-      let key = path.split("-").slice(-1)[0];
-      this.$axios
-        .$get(
-          `https://inkfunctions.netlify.app/.netlify/functions/stories?key=${key}`
-        )
-        .then((response) => {
-          this.loader = false;
-          this.story = response;
-        });
-    },
-  },
+  // created() {
+  //   this.fetchStory();
+  // },
+  // methods: {
+  //   fetchStory() {
+  //     let path = this.$route.params.slug;
+  //     let key = path.split("-").slice(-1)[0];
+  //     this.$axios
+  //       .$get(
+  //         `https://inkfunctions.netlify.app/.netlify/functions/stories?key=${key}`
+  //       )
+  //       .then((response) => {
+  //         this.loader = false;
+  //         this.story = response;
+  //       });
+  //   },
+  // },
 };
 </script>
 
