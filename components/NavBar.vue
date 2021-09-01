@@ -19,7 +19,7 @@
             class="
               font-lora font-bold
               capitalize
-              hover:text-gray-400
+              hover:text-gray-300
               text-lg
               md:text-3xl
             "
@@ -33,7 +33,14 @@
         <span>
           <nuxt-link to="/stories" class="hover:underline"> Stories </nuxt-link>
         </span>
-        <button class="btn-white-navbar hover:bg-black hover:text-white">
+        <button
+          class="
+            btn-white-navbar
+            hover:bg-black
+            hover:text-white
+            hover:underline
+          "
+        >
           <a href="https://app.theexpressiveink.com">Sign Up or Login</a>
         </button>
       </div>

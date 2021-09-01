@@ -40,6 +40,13 @@
               </div>
             </nuxt-link>
           </div>
+          <!-- loading skeleton -->
+          <div v-for="item in [1, 2, 3, 4, 5, 6]" :key="item">
+            <div
+              v-if="loader"
+              class="animate-pulse bg-gray-500 w-full h-40"
+            ></div>
+          </div>
         </div>
       </div>
     </div>
@@ -49,12 +56,10 @@
 
 <script>
 export default {
-  head() {
-    return {};
-  },
   data() {
     return {
       stories: "",
+      loader: true,
     };
   },
   created() {
@@ -67,6 +72,7 @@ export default {
           "https://inkfunctions.netlify.app/.netlify/functions/stories?status=published"
         )
         .then((response) => {
+          this.loader = false;
           this.stories = response.value;
         });
     },
