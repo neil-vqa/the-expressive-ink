@@ -110,7 +110,7 @@
 </template>
 
 <script>
-import { metaTags } from "../../utils/meta";
+import { metaTags } from "~/utils/meta.js";
 
 export default {
   head() {
@@ -121,16 +121,6 @@ export default {
         excerpt: this.story.excerpt,
         cover_img: this.story.cover_img,
       }),
-      /*meta: [
-			{ hid: 'description', name: 'description', content: this.story.excerpt },
-				{ hid: 'og:title', name: 'og:title', content: `${this.story.title} | The Expressive Ink` },
-				{ hid: 'og:description', name: 'og:description', content: this.story.excerpt },
-				{ hid: 'og:image', name: 'og:image', content: this.story.cover_img },
-				{ hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
-				{ hid: 'twitter:title', name: 'twitter:title', content: this.story.title },
-				{ hid: 'twitter:description', name: 'twitter:description', content: this.story.excerpt },
-				{ hid: 'twitter:image', name: 'twitter:image', content: this.story.cover_img },
-			] */
     };
   },
   async fetch() {
