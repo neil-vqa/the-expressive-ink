@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -47,5 +49,17 @@ export default {
   build: {
     transpile: ['vue-tippy'],
     //publicPath: process.env.PUBLIC_URL,
+  },
+
+  // generate dynamic routes
+  generate: {
+    routes() {
+      return axios.get("https://inkfunctions.netlify.app/.netlify/functions/stories?status=published")
+        .then(response => {
+          return response.data.value.map(story => {
+            return `/stories/${story.slug}-${story.key}`
+          });
+        })
+    }
   }
 }
